@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TOPIC_REFRESH_RL</title><link rel="stylesheet" href="../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../index.html">Course start</a> · <a href="../00_start/SETUP.html">Setup</a> · <a href="../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="just-in-time-refresh--mdp-and-tabular-q-learning">Just-in-Time Refresh — MDP and Tabular Q-Learning</h1>
+<blockquote>
+<p><strong>Use:</strong> optional before TD3; revisit before TD4/TDo2 if needed<br/>
+<strong>Timebox:</strong> 20 minutes<br/>
+<strong>Status:</strong> ungraded support; no assessed environment results appear here</p>
+</blockquote>
+<h2 id="1-retrieve-the-mdp-contract--4-minutes">1. Retrieve the MDP contract — 4 minutes</h2>
+<p>An MDP specifies states <code>S</code>, actions <code>A</code>, transition behaviour <code>P</code>, reward <code>R</code>,
+and discount <code>gamma</code>. In inventory control, a state may encode stock and demand
+regime; an action may be an order quantity. The reward must be traceable to the
+declared ordering, holding, and shortage costs. An agent cannot repair an
+ambiguous reward contract by training longer.</p>
+<p>Write one sentence for each: state, action, transition, reward, terminal rule.
+Then identify which quantities are observable before the action.</p>
+<h2 id="2-bellman-target-and-update--6-minutes">2. Bellman target and update — 6 minutes</h2>
+<p>For a non-terminal transition <code>(s, a, r, s_next)</code>, tabular Q-learning uses:</p>
+<p><code>target = r + gamma * max_a Q[s_next, a]</code></p>
+<p><code>Q[s, a] &lt;- Q[s, a] + alpha * (target - Q[s, a])</code></p>
+<p>For a terminal transition, omit the future-value term. Compute one update for
+<code>Q[s,a]=2</code>, <code>r=-1</code>, <code>gamma=0.9</code>, <code>max Q[s_next,:]=4</code>, and <code>alpha=0.5</code>.</p>
+<p>&lt;details&gt;
+&lt;summary&gt;Checkpoint answer&lt;/summary&gt;</p>
+<p>The target is <code>-1 + 0.9*4 = 2.6</code>. The temporal-difference error is <code>0.6</code>, so the
+updated value is <code>2 + 0.5*0.6 = 2.3</code>. If the transition were terminal, the target
+would be <code>-1</code>.</p>
+<p>&lt;/details&gt;</p>
+<h2 id="3-learning-is-not-release-evidence--5-minutes">3. Learning is not release evidence — 5 minutes</h2>
+<p>Exploration is permitted during training. Release evaluation instead freezes
+the Q-table and policy, disables learning, and compares against random and a
+transparent reorder policy on identical unseen seeds. Retain per-episode return,
+stockout/shortage cost, holding cost, order cost, and safety failures. Mean
+training reward alone cannot support a deployment claim.</p>
+<p>Audit this proposal: “Select the seed with the highest training return, keep
+epsilon at 0.1 during evaluation, and report its mean reward.” Name three
+violations.</p>
+<p>&lt;details&gt;
+&lt;summary&gt;Checkpoint answer&lt;/summary&gt;</p>
+<p>It selects a favourable seed, evaluates a stochastic exploratory rather than
+the frozen release policy, and lacks paired unseen cases plus transparent
+baselines and operational/safety metrics.</p>
+<p>&lt;/details&gt;</p>
+<h2 id="4-ready-for-td-checkpoint--5-minutes">4. Ready-for-TD checkpoint — 5 minutes</h2>
+<p>You are ready for the Core starter when you can answer all four:</p>
+<ul>
+<li>Can I map every state and action index to an operational meaning?</li>
+<li>Can I reconstruct one reward from its cost terms?</li>
+<li>Can I compute terminal and non-terminal Q-learning updates?</li>
+<li>Can I distinguish training seeds from paired unseen evaluation seeds?</li>
+</ul>
+<p>If one answer is no, enter the Support starter and record the earliest missing
+item in <a href="templates/LEARNING_CHECKPOINT.html"><code>templates/LEARNING_CHECKPOINT.md</code></a>.
+The route does not cap your mark.</p>
+</main></body></html>

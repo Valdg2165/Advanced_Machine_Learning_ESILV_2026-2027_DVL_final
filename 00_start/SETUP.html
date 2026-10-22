@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SETUP</title><link rel="stylesheet" href="../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../index.html">Course start</a> · <a href="../00_start/SETUP.html">Setup</a> · <a href="../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="local-setup--start-here-before-td1">Local setup — start here before TD1</h1>
+<ol>
+<li>Download and extract the <strong>complete</strong> course ZIP. Keep its folders together.</li>
+<li>Install Python 3.12 and uv if not already available. uv installation: <a href="https://docs.astral.sh/uv/getting-started/installation/">https://docs.astral.sh/uv/getting-started/installation/</a>.</li>
+<li>Open a terminal in the extracted folder containing <code>uv.lock</code> and <code>shared/</code>.</li>
+<li>Run:</li>
+</ol>
+<pre><code class="language-sh">uv sync --frozen --python 3.12
+uv run python scripts/check_setup.py
+</code></pre>
+<p>The first installation requires Internet access. Once installed, the TD1 data and computations run locally without a connection.</p>
+<ol start="5">
+<li>In VS Code with the Python and Jupyter extensions, open <code>02_labs/TD1_temporal_data_baselines/student_starter.ipynb</code> (Core) or <code>support_starter.ipynb</code> (Support). Select the extracted folder's <code>.venv</code> Python as notebook kernel. Both routes have the same learning outcomes and marking ceiling.</li>
+<li>Restart the kernel and run all cells in order. TODOs are intentional: complete them during the practical. A clean scaffold run checks setup; it is not a completed assignment.</li>
+</ol>
+<p>The expected setup message is <code>SETUP PASS: public data hashes and imports verified; 1433 daily development rows.</code></p>
+<p>Start with the <a href="../02_labs/TD1_temporal_data_baselines/README.html">TD1 brief</a> for the 180-minute route and checkpoints. The <a href="../shared/datasets/cards/daily_demand.html">data card</a> defines the synthetic dataset and censored recorded sales.</p>
+<p>If setup fails, report the first error and your Python version using the <a href="../04_student_support/templates/HELP_REQUEST.html">help template</a>. Do not install arbitrary replacements or use a different dataset.</p>
+<p>For the browser book, open <code>interactive/index.html</code> after extraction. Its experiments work offline; external readings need a connection. Notebook execution needs the Python environment above.</p>
+</main></body></html>

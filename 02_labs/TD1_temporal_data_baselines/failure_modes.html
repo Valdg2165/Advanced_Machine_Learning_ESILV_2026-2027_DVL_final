@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>failure_modes</title><link rel="stylesheet" href="../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../index.html">Course start</a> · <a href="../../00_start/SETUP.html">Setup</a> · <a href="../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="td1-failure-modes-and-recovery">TD1 failure modes and recovery</h1>
+<table>
+<thead>
+<tr>
+<th>Symptom/anti-pattern</th>
+<th>Why the evidence fails</th>
+<th>Recovery check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Random split</td>
+<td>future observations enter apparent training</td>
+<td>restore one chronological origin and later validation block</td>
+</tr>
+<tr>
+<td>Seasonal baseline reads validation values</td>
+<td>the comparator has target leakage</td>
+<td>build every lag from history available at the origin</td>
+</tr>
+<tr>
+<td>Dates sorted after forecasting</td>
+<td>predictions can be paired to the wrong target</td>
+<td>sort and assert the temporal index before splitting</td>
+</tr>
+<tr>
+<td>Stockout flag treated as latent demand</td>
+<td>recorded sales are misinterpreted</td>
+<td>state the censoring limitation and avoid a latent-demand claim</td>
+</tr>
+<tr>
+<td>One metric or one favourable interval</td>
+<td>baseline behaviour is incompletely described</td>
+<td>report MAE, sMAPE, the full 28-day trace, and a failure period</td>
+</tr>
+</tbody>
+</table>
+<p>If recovery changes a data boundary, origin, seed set, reward, model order, or
+frozen artifact, invalidate affected metrics and rerun the declared comparison.</p>
+</main></body></html>

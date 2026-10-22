@@ -1,0 +1,96 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>README</title><link rel="stylesheet" href="../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../index.html">Course start</a> · <a href="../../00_start/SETUP.html">Setup</a> · <a href="../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><p><a href="student_starter.ipynb" download>Core notebook</a> · <a href="support_starter.ipynb" download>Support notebook</a></p><h1 id="tdo2--controlled-rl-evaluation-and-safety-release">TDo2 — Controlled RL evaluation and safety release</h1>
+<p><strong>Duration:</strong> 3 hours<br/>
+<strong>Mode:</strong> paired implementation, individual evidence and interpretation<br/>
+<strong>Scope:</strong> Time Series and Reinforcement Learning only<br/>
+<strong>CPU profile:</strong> verified local Python 3.11/3.12; no GPU required</p>
+<h2 id="decision-scenario">Decision scenario</h2>
+<p>Submit the frozen TD4 Q-table to a common hidden evaluation batch, then decide whether cost, service, uncertainty, and safety evidence justify release over the TD3 heuristic.</p>
+<h2 id="student-route-at-a-glance">Student route at a glance</h2>
+<ul>
+<li>01 — <strong>WHERE AM I?</strong> RL: controlled release after CM-B2, TD3, and TD4.</li>
+<li>02 — <strong>TODAY'S OBJECTIVE:</strong> Evaluate the frozen TD4 policy under the controlled protocol and make a bounded safety/release decision.</li>
+<li>03 — <strong>WHAT YOU NEED:</strong> The locked local Python 3.11/3.12 environment, frozen Q-table/configuration, and public evaluator contract.</li>
+<li>04 — <strong>CORE ROUTE:</strong> <a href="student_starter.ipynb">Open the Core notebook</a>.</li>
+<li>05 — <strong>SUPPORT ROUTE:</strong> <a href="support_starter.ipynb">Open the guided Support notebook</a>; it has the same assessed Core and 20/20 ceiling.</li>
+<li>06 — <strong>CHECKPOINTS:</strong> Follow the <a href="#180-minute-route">180-minute route</a>.</li>
+<li>07 — <strong>WHAT TO SUBMIT / RETAIN:</strong> Use <a href="#deliverables">Deliverables</a> and <a href="#submission-hygiene">Submission hygiene</a>; retain the frozen artifact, returned receipt, and release decision.</li>
+<li>08 — <strong>COMMON FAILURE MODES:</strong> See <a href="failure_modes.html">TDo2 recovery checks</a>.</li>
+<li>09 — <strong>WHAT THIS PREPARES NEXT:</strong> Supply the RL policy release claim and controlled receipt to the two-strand capstone.</li>
+</ul>
+<h2 id="learning-outcomes">Learning outcomes</h2>
+<ul>
+<li>validate and hash the frozen Q-table/configuration before controlled evaluation</li>
+<li>define a policy comparison function that accepts injected seeds without revealing them</li>
+<li>interpret cost and fill-rate Student-t intervals with operational safety measures</li>
+<li>issue an accept/conditional/reject decision that permits the transparent heuristic to win</li>
+</ul>
+<h2 id="before-class--verified-local-runtime">Before class — verified local runtime</h2>
+<p>From the course root run <code>uv sync --frozen</code>, then
+<code>uv run python scripts/check_setup.py</code>. Colab is an optional
+portability path governed by the release evidence for the exact archive in use;
+see <code>../COLAB_PREFLIGHT.md</code>.</p>
+<p>Read the applicable contract before modelling: <code>shared/inventory_env.py</code> and <code>shared/rl.py</code>.</p>
+<h2 id="capstone-evidence-boundary">Capstone evidence boundary</h2>
+<p>Append the protected/controlled evidence, receipt/hash, and the resulting
+claim decision to the portfolio. This session may confirm, revise, or reject
+earlier provisional candidates; a negative or baseline-winning result remains
+valid final empirical evidence when the protocol is sound.</p>
+<h2 id="choose-your-route">Choose your route</h2>
+<ul>
+<li><strong>Support:</strong> open <code>support_starter.ipynb</code> for smaller steps, contracts, assertions, micro-examples, and recovery checkpoints.</li>
+<li><strong>Core:</strong> open <code>student_starter.ipynb</code> for the less-scaffolded implementation.</li>
+<li><strong>Extension:</strong> attempt the bounded optional task only after valid Core evidence.</li>
+</ul>
+<p>Support and Core share the same outcomes and full 20/20 ceiling. Extensions add
+no points and cannot repair invalid Core evidence.</p>
+<h2 id="180-minute-route">180-minute route</h2>
+<ul>
+<li>0–20 min — restore and validate frozen Q-table, config, hash, and evaluator</li>
+<li>20–55 min — public safety replay on separate declared development episodes</li>
+<li>55–90 min — controlled evaluator contract and instructor handoff</li>
+<li>90–125 min — aggregate cost/fill intervals, unmet demand, stock, and action audit</li>
+<li>125–150 min — release gate, risk register, receipt/hash freeze</li>
+<li>150–155 min — immutable upload and transition to individual conditions</li>
+<li>155–180 min — standardized individual checkpoint: 20-minute task + 5-minute submission</li>
+</ul>
+<h2 id="assessed-core">Assessed Core</h2>
+<ul>
+<li>Load, validate, and hash the TD4 Q-table; it must be finite with shape <code>(9,2,3)</code>.</li>
+<li>Keep random, reorder, and Q-learning policies unchanged for all controlled episodes.</li>
+<li>The evaluator must accept injected seeds; student code must not hard-code, print, infer, or search for final seed values.</li>
+<li>Freeze the Q-table, environment source, evaluator source, configuration, and immutable tag before instructor execution.</li>
+<li>Interpret returned mean cost and fill-rate 95% Student-t intervals together with unmet demand, mean stock, and order quantity.</li>
+<li>Use independent episodes as sampling units; state the approximate-normality assumption and distinguish a confidence interval for mean cost from a prediction interval for one future episode.</li>
+<li>The handoff supplies marginal policy intervals, not a paired-difference test. The mean-cost/service release rule is an empirical decision rule and does not establish statistical superiority.</li>
+<li>Apply the predeclared service floor and comparator rule; training reward alone cannot authorize release.</li>
+</ul>
+<h2 id="supportcoreextension-parity">Support/Core/Extension parity</h2>
+<ul>
+<li><strong>Beginner/Support:</strong> complete every assessed decision and interpretation; prewritten checks are navigation, not evidence credit.</li>
+<li><strong>Intermediate/Core:</strong> implement directly from the contract and add one justified diagnostic.</li>
+<li><strong>Advanced/Extension:</strong> freeze valid Core first, then record the separate configuration and compute budget.</li>
+</ul>
+<h2 id="optional-advanced-extension--ungraded">Optional Advanced extension — ungraded</h2>
+<p>On declared public development episodes only, stress one cost coefficient while keeping all three frozen policies unchanged. Treat this as reward sensitivity, not hidden-batch evidence.</p>
+<h2 id="evidence-contract">Evidence contract</h2>
+<p>Every substantive claim identifies the data/environment version, protocol,
+baseline, metric, repeated evidence, reproducible code/configuration, and a
+material limitation. Use public base seeds <code>11, 23, 37, 51, 71</code> wherever the
+session requires repeated stochastic evidence.</p>
+<h2 id="deliverables">Deliverables</h2>
+<ul>
+<li>completed notebook</li>
+<li>validated Q-table/config/hash bundle</li>
+<li>seed-injected evaluator contract</li>
+<li>controlled aggregate and receipt/checksums when issued</li>
+<li>safety gate decision and risk register</li>
+</ul>
+<h2 id="submission-hygiene">Submission hygiene</h2>
+<ul>
+<li>restart the kernel and run top to bottom;</li>
+<li>keep outputs concise and preserve failed or partial evidence;</li>
+<li>never include private teaching or evaluation material;</li>
+<li>update the pair evidence, claim-candidate/decision, and contribution records before leaving;</li>
+<li>freeze the relevant configuration, artifact hashes, and commit/checkpoint.</li>
+</ul>
+</main></body></html>

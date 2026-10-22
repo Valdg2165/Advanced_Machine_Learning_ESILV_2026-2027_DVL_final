@@ -1,0 +1,235 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CAPSTONE_BRIEF</title><link rel="stylesheet" href="../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../index.html">Course start</a> · <a href="../../00_start/SETUP.html">Setup</a> · <a href="../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="capstone-brief--operations--decisions-portfolio">Capstone Brief — Operations &amp; Decisions Portfolio</h1>
+<blockquote>
+<p><strong>Module:</strong> Advanced Machine Learning — ESILV<br/>
+<strong>Team:</strong> stable pair<br/>
+<strong>Deadline rule:</strong> course-owner working rule of at least seven calendar days
+after TDo2 and return of both controlled receipts; the LMS date supersedes
+this rule when published<br/>
+<strong>Status:</strong> accepted by the course owner for the internal teaching release;
+an official LMS rule, if different, triggers a rebuild</p>
+</blockquote>
+<h2 id="1-purpose-and-hard-boundary">1. Purpose and hard boundary</h2>
+<p>This capstone curates the forecasting path built in <strong>TD1, TD2 and TDo1</strong> and
+the reinforcement-learning path built in <strong>TD3, TD4 and TDo2</strong>. It asks whether
+that frozen six-session evidence can support a bounded operational decision. It
+does not ask for a new model, a joined forecast-to-policy system, or a seventh
+practical session.</p>
+<p>Initialize the repository during TD1 and update its evidence index,
+provenance, contributions and AI-use record before leaving each of the six
+scheduled sessions. The capstone is a release review of those results, not a
+second grade for every implementation.</p>
+<h2 id="2-signature-evidence-rule">2. Signature evidence rule</h2>
+<p>Every performance claim must identify:</p>
+<blockquote>
+<p>data or environment version + evaluation protocol + baseline + metric +
+repeated evidence + reproducible code and configuration + limitation</p>
+</blockquote>
+<p>Every row in <code>claims_evidence.csv</code> must resolve to exact artifacts at the
+immutable submitted tag. “The model is better” and “the policy learned” are not
+claims; they omit the population, comparator and decision boundary.</p>
+<h2 id="3-required-claim-set">3. Required claim set</h2>
+<p>Submit <strong>3–6 claims</strong>. Exactly these three roles are mandatory; up to three
+<code>supporting</code> claims may add a narrow failure, interval or safety result. Every
+empirical claim must originate in the appropriate forecasting or RL session.</p>
+<table>
+<thead>
+<tr>
+<th>Required role</th>
+<th>Source</th>
+<th>Required evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forecasting_release</code></td>
+<td>TD1 + TD2 + TDo1</td>
+<td>Trace the temporal/seasonal-naive foundation through rolling-origin model evidence to the frozen release, one failure period and the instructor-issued protected 28-day receipt.</td>
+</tr>
+<tr>
+<td><code>rl_policy_release</code></td>
+<td>TD3 + TD4 + TDo2</td>
+<td>Trace the MDP/reward and random/reorder baselines through frozen Q-learning to independent public evaluation, cost dispersion, fill rate and the instructor-issued controlled-batch receipt.</td>
+</tr>
+<tr>
+<td><code>operational_safety_synthesis</code></td>
+<td>TS and RL release claims</td>
+<td>Conditional go/hold/no-go decision, named fallback, refusal boundary, and next evidence need.</td>
+</tr>
+</tbody>
+</table>
+<p>The synthesis must cite the two source claim IDs. Forecast origins and RL
+episodes are different evaluation populations. The course has not shown that a
+TDo1 forecast feeds the TDo2 environment, so do not claim end-to-end controller
+performance, causal operational benefit, or production safety. A defensible
+release may recommend a limited trial, a hold, or no-go.</p>
+<p>If prior evidence or a replay is invalid, keep the evidence and mark the claim
+<code>partial</code>, <code>failed</code>, or <code>withdrawn</code>. A negative result can be excellent work.
+Silent repair, post-hoc seed selection or replacement training cannot earn
+capstone credit.</p>
+<h2 id="4-progressive-use-and-workload">4. Progressive use and workload</h2>
+<p>Use the same repository across the existing six practical sessions:</p>
+<table>
+<thead>
+<tr>
+<th>Session</th>
+<th>Capstone action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TD1</td>
+<td>Copy skeleton; freeze time boundary, data hash and seasonal-naive evidence; start <code>TS-01</code>.</td>
+</tr>
+<tr>
+<td>TD2</td>
+<td>Add rolling-origin model comparison, failure period and configuration paths.</td>
+</tr>
+<tr>
+<td>TD3</td>
+<td>Add MDP/reward contract plus random and reorder baseline evidence; start <code>RL-01</code>.</td>
+</tr>
+<tr>
+<td>TD4</td>
+<td>Add frozen Q-table, learning configuration and independent development evaluation.</td>
+</tr>
+<tr>
+<td>TDo1</td>
+<td>Freeze forecasting release, final 28-day CSV and controlled handoff.</td>
+</tr>
+<tr>
+<td>TDo2</td>
+<td>Freeze RL safety release and handoff; complete the operational/safety synthesis.</td>
+</tr>
+</tbody>
+</table>
+<p>Final curation is <strong>6–8 out-of-class hours per pair</strong>, not an additional
+contact session: claim selection and audit (1.5h), two clean replays (2h),
+traceability and declarations (1h), brief (1.5–2h), pair review/tag (0.5–1.5h).</p>
+<h2 id="5-required-repository">5. Required repository</h2>
+<p>Use <code>templates/model_repository/</code> and keep these mandatory files:</p>
+<pre><code class="language-text">README.md
+submission.yaml
+claims_evidence.csv
+AI_USE_LOG.md
+CONTRIBUTIONS.csv
+configs/replay.yaml
+data/README.md
+artifacts/final_forecast.csv
+artifacts/q_table.npy
+evidence/controlled/
+evidence/replay/forecasting/
+evidence/replay/reinforcement_learning/
+report/release_brief.md
+scripts/quick_replay.py
+</code></pre>
+<p>Code, lock files and original evidence may remain under frozen TDo paths when
+the manifest resolves them. Do not copy hidden targets/seeds, private episode
+rows, restricted data, environments, caches or irrelevant notebook output.</p>
+<h3 id="claims-schema">Claims schema</h3>
+<p>One row per claim uses these fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>claim_id</code>, <code>claim_role</code>, <code>source_session</code>, <code>strand</code></td>
+<td>Stable identity, one allowed role, exact source session(s), and <code>forecasting</code>, <code>reinforcement_learning</code>, or <code>operational_safety</code>.</td>
+</tr>
+<tr>
+<td><code>source_claim_ids</code></td>
+<td>Required for synthesis; <code>not_applicable</code> for empirical releases.</td>
+</tr>
+<tr>
+<td><code>claim_text</code>, <code>dataset_or_environment</code>, <code>protocol</code>, <code>comparator</code>, <code>metric</code>, <code>estimate</code></td>
+<td>Bounded claim and scientific contract.</td>
+</tr>
+<tr>
+<td><code>uncertainty_or_repetitions</code></td>
+<td>Origins/intervals or independent episodes/seeds and dispersion.</td>
+</tr>
+<tr>
+<td><code>code_path</code>, <code>config_path</code>, <code>prior_evidence_path</code>, <code>replay_evidence_path</code></td>
+<td>Exact frozen paths; synthesis uses <code>not_applicable</code> for code/replay.</td>
+</tr>
+<tr>
+<td><code>controlled_evidence_id</code>, <code>controlled_evidence_path</code></td>
+<td>Forecast receipt <code>submission_id</code> or RL receipt <code>evidence_id</code>, plus exact path; synthesis cites source claims.</td>
+</tr>
+<tr>
+<td><code>decision_bound</code>, <code>safety_or_fallback_rule</code>, <code>limitation</code>, <code>status</code></td>
+<td>What is justified, the fallback or refusal rule, transfer boundary, and <code>supported</code>/<code>partial</code>/<code>failed</code>/<code>withdrawn</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-two-strand-replay-contract">6. Two-strand replay contract</h2>
+<p>Run exactly once for the release candidate from repository root:</p>
+<pre><code class="language-bash">python scripts/quick_replay.py --config configs/replay.yaml
+</code></pre>
+<p>The configuration contains exactly two frozen commands in order: forecasting,
+then reinforcement learning. They refresh one decisive public output per
+strand in at most ten minutes total. No command may fit, retrain, tune, sweep,
+change a protocol or select a seed. The runner hashes all declared scripts,
+configurations and data inputs, confines paths to the repository, rejects stale
+outputs and emits a success receipt only after both commands pass.</p>
+<p>On genuine failure, preserve <code>evidence/quick_replay_status.json</code>, emit no
+success receipt, update affected claims, and set
+<code>submission.quick_replay_receipt</code> to
+<code>not_applicable_after_failed_status</code>. Do not repair the model during capstone.</p>
+<h2 id="7-controlled-evaluation">7. Controlled evaluation</h2>
+<p>At TDo1, freeze <code>artifacts/final_forecast.csv</code> with exactly the public 28 dates
+and the course submission columns. The instructor scores it once against the
+protected horizon and returns a target-free receipt bound to the CSV hash.</p>
+<p>At TDo2, freeze the non-pickle <code>(9, 2, 3)</code> <code>artifacts/q_table.npy</code>, configuration,
+evaluator and tag. The instructor evaluates it once on the common hidden batch
+and returns an aggregate, receipt and detached hashes. Hidden seeds and episode
+rows remain instructor-only.</p>
+<p>The public replays exercise development contracts; they cannot recreate either
+protected evaluation. If an instructor receipt is late, the deadline remains
+blocked. Students are not penalized for an institutional handoff delay.</p>
+<h2 id="8-release-brief-and-declarations">8. Release brief and declarations</h2>
+<p>The release brief is at most <strong>four equivalent pages</strong>, excluding references.
+It must include:</p>
+<ol>
+<li>decision context and release bounds;</li>
+<li>forecasting result, failure period and protected receipt;</li>
+<li>RL result, safety measure and protected receipt;</li>
+<li>conditional operational decision and transparent fallback;</li>
+<li>explicit non-integration statement, risks, refused claims and next evidence.</li>
+</ol>
+<p>Use only <code>CONTRIBUTIONS.csv</code> for pair contributions and <code>AI_USE_LOG.md</code> for AI
+use. Log tool, purpose, retained material and human verification. Both students
+must be able to explain and reproduce every credited result.</p>
+<h2 id="9-support-core-and-extension">9. Support, Core and Extension</h2>
+<p>All students are graded on the same <strong>Core</strong> evidence standard and can earn full
+marks without extensions.</p>
+<ul>
+<li><strong>Support:</strong> provided schemas, field examples, replay guardrails, checklist,
+office-hour diagnostics and guided checkpoints. Support does not reveal
+results or repair invalid evidence.</li>
+<li><strong>Core:</strong> the three required roles, two frozen replays, controlled receipts,
+traceability, synthesis and declarations.</li>
+<li><strong>Extension:</strong> optional sensitivity or ablation evidence already frozen in
+the relevant one of the six sessions. It cannot replace a missing Core result
+or raise the maximum grade.</li>
+</ul>
+<h2 id="10-submission-gate">10. Submission gate</h2>
+<p>Before immutable tagging, both students verify:</p>
+<ul>
+<li>3–6 claims and all three required roles;</li>
+<li>every empirical claim traces only to the appropriate forecasting or RL
+sessions in the six-session sequence;</li>
+<li>exactly two replay commands and a current success receipt, or an honest failed
+status with no success receipt;</li>
+<li>protected receipts match the frozen artifact hashes;</li>
+<li>every path exists and every placeholder is resolved;</li>
+<li>the synthesis does not claim tested integration;</li>
+<li>no hidden target, hidden seed, secret, personal data or instructor key is present;</li>
+<li>AI and contribution declarations are complete.</li>
+</ul>
+<p>Submit the immutable Git tag URL through the ESILV LMS. Formal late, absence,
+resit and integrity rules are those approved by ESILV, not invented here.</p>
+</main></body></html>

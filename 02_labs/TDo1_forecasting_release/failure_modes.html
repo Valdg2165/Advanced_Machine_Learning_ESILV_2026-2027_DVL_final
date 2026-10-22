@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>failure_modes</title><link rel="stylesheet" href="../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../index.html">Course start</a> · <a href="../../00_start/SETUP.html">Setup</a> · <a href="../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="tdo1-failure-modes-and-recovery">TDo1 failure modes and recovery</h1>
+<table>
+<thead>
+<tr>
+<th>Symptom/anti-pattern</th>
+<th>Why the evidence fails</th>
+<th>Recovery check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interval coverage reported without bounds</td>
+<td>the uncertainty claim has no artifact</td>
+<td>retain lower/upper values for every evaluated case</td>
+</tr>
+<tr>
+<td>Narrowest interval called best</td>
+<td>sharp but miscalibrated intervals are rewarded</td>
+<td>interpret coverage and width jointly</td>
+</tr>
+<tr>
+<td>Protected targets opened before freeze</td>
+<td>final horizon becomes tuning data</td>
+<td>withdraw the score and restore a genuinely untouched handoff</td>
+</tr>
+<tr>
+<td>Future descriptors silently ignored</td>
+<td>promotion/holiday limitations disappear</td>
+<td>state which known descriptors the released model does not use</td>
+</tr>
+<tr>
+<td>Negative or non-nested release bounds</td>
+<td>artifact is operationally incoherent</td>
+<td>validate lower95 &lt;= lower80 &lt;= point &lt;= upper80 &lt;= upper95</td>
+</tr>
+</tbody>
+</table>
+<p>If recovery changes a data boundary, origin, seed set, reward, model order, or
+frozen artifact, invalidate affected metrics and rerun the declared comparison.</p>
+</main></body></html>

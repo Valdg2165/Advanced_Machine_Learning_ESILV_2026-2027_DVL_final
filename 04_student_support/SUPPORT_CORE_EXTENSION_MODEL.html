@@ -1,0 +1,155 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SUPPORT_CORE_EXTENSION_MODEL</title><link rel="stylesheet" href="../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../index.html">Course start</a> · <a href="../00_start/SETUP.html">Setup</a> · <a href="../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="support-core-and-extension-model">Support, Core, and Extension Model</h1>
+<h2 id="1-one-course-adjustable-scaffolding">1. One course, adjustable scaffolding</h2>
+<p>Every applied topic has one assessed Core route. The Support route changes the
+amount of scaffolding, not the learning outcome. The Extension route adds depth
+after the Core evidence is valid.</p>
+<table>
+<thead>
+<tr>
+<th>Route</th>
+<th>What changes</th>
+<th>What does not change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Support</td>
+<td>More explanation, checkpoint cells, topic-specific hints, a micro-example where it clarifies the assessed construct, and recovery guidance; smoke data only for optional pre-class rehearsal</td>
+<td>Canonical assessed data, required protocol, core claim, evidence fields, and validity standard</td>
+</tr>
+<tr>
+<td>Core</td>
+<td>Standard starter, required decisions, declared compute budget</td>
+<td>Learning outcomes and evidence contract</td>
+</tr>
+<tr>
+<td>Extension</td>
+<td>One bounded optional methodological/engineering challenge for formative feedback</td>
+<td>Core mark ceiling, baseline, fair protocol, reproducibility, and limitations</td>
+</tr>
+</tbody>
+</table>
+<p>Students choose a route at the start of each session and may change after the
+first checkpoint. No route appears on the transcript.</p>
+<h2 id="2-topic-by-topic-routes">2. Topic-by-topic routes</h2>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Support route</th>
+<th>Core route</th>
+<th>Extension route</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Temporal contract and forecasting baselines (TD1)</td>
+<td>Guided date-index audit, feature-availability checklist, and baseline checkpoints</td>
+<td>Freeze the horizon and origin; implement mean, last-value, and seasonal-naive comparators without leakage</td>
+<td>Add weekday/censoring error slices without changing the frozen selection block</td>
+</tr>
+<tr>
+<td>Rolling-origin forecasting (TD2)</td>
+<td>Provided origin-generator explanation and model-fitting checkpoints</td>
+<td>Compare seasonal naive, ETS, and bounded SARIMA on identical origins, horizons, and metrics</td>
+<td>Test one predeclared alternative specification under the same origin and compute budget</td>
+</tr>
+<tr>
+<td>MDP, reward, and comparator policies (TD3)</td>
+<td>State/action worksheet, one-step cost reconstruction, and policy skeletons</td>
+<td>Verify the environment contract and reward; compare random and transparent reorder policies on common seeds</td>
+<td>Add one adversarial environment invariant or predeclared reward sensitivity check</td>
+</tr>
+<tr>
+<td>Tabular Q-learning (TD4)</td>
+<td>Guided update trace, training-loop checkpoints, and Q-table validation</td>
+<td>Implement Q-learning explicitly and compare a frozen policy with both baselines on separate development seeds</td>
+<td>Add a bounded stability/parameter sensitivity study or Double Q-learning after Core validity</td>
+</tr>
+<tr>
+<td>Forecasting release (TDo1)</td>
+<td>Release checklist, interval helper explanation, and evidence-row checkpoints</td>
+<td>Freeze the TD2 decision; score the protected horizon once and issue a bounded operational release</td>
+<td>Add one predeclared uncertainty or decision-loss diagnostic without reopening selection</td>
+</tr>
+<tr>
+<td>RL safety release (TDo2)</td>
+<td>Controlled-evaluation checklist and safety-case scaffold</td>
+<td>Submit the frozen Q-table; compare it on injected evaluation seeds and issue release/rollback conditions</td>
+<td>Add one predeclared stress case after the protected Core receipt is frozen</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-core-validity-gates">3. Core validity gates</h2>
+<p>All routes must satisfy these gates before an optional extension is attempted.
+Valid Core work can earn full marks; extensions add no rubric points:</p>
+<ul>
+<li>data and temporal boundaries are explicit and respected;</li>
+<li>selection never uses untouched final test evidence;</li>
+<li>comparator and label/compute/evaluation budgets are fair;</li>
+<li>stochastic claims expose repeated results rather than a favourite seed;</li>
+<li>code/configuration/evidence paths resolve;</li>
+<li>limitations and failed cases are visible;</li>
+<li>AI-assisted work is understood, tested, and disclosed as required.</li>
+</ul>
+<h2 id="4-session-rhythm">4. Session rhythm</h2>
+<p>A 3h applied session should normally use:</p>
+<ol>
+<li><strong>0:00–0:15 — preflight and retrieval:</strong> environment, checkpoint, and one
+concept question;</li>
+<li><strong>0:15–0:35 — instructor micro-demonstration:</strong> one decisive pattern or
+failure, not the complete solution;</li>
+<li><strong>0:35–1:30 — Core build A:</strong> protocol and baseline;</li>
+<li><strong>1:30–1:40 — break and checkpoint:</strong> choose recovery/support if needed;</li>
+<li><strong>1:40–2:30 — Core build B:</strong> comparator and repeated evaluation;</li>
+<li><strong>2:30–2:50 — evidence review:</strong> claim row, artifact trace, and peer check;</li>
+<li><strong>2:50–3:00 — exit check:</strong> limitation, next action, and recovery need.</li>
+</ol>
+<p>Extensions begin only when Core build B and the evidence review pass. Instructors
+may adjust minutes to the lab, but must preserve time for evidence and recovery.
+TDo2 is the declared exception: its final 25 minutes hold the standardized
+individual practical checkpoint unless ESILV allocates separate controlled
+time, so the RL Core path must fit the preceding 155 minutes.</p>
+<h2 id="5-recovery-checkpoints">5. Recovery checkpoints</h2>
+<p>Each applied session should provide:</p>
+<ul>
+<li>a clean preflight state;</li>
+<li>one checkpoint after protocol/baseline setup;</li>
+<li>a result schema with no assessed conclusion filled in;</li>
+<li>common failure modes and a reset procedure;</li>
+<li>a short recovery task confirming the student understands what the checkpoint
+contains.</li>
+</ul>
+<p>A recovery checkpoint is not permission to claim work the student did not
+perform. Its purpose is to protect the next learning outcome from an earlier
+technical failure.</p>
+<h2 id="6-team-roles">6. Team roles</h2>
+<p>Students work in stable pairs and rotate:</p>
+<ul>
+<li><strong>experiment lead:</strong> states the question and controls the protocol;</li>
+<li><strong>evidence/reproducibility steward:</strong> tracks provenance, versions, seeds, and
+runtime, reruns decisive evidence, and challenges the claim.</li>
+</ul>
+<p>Both students remain jointly responsible for data/environment provenance. Roles
+switch in the next session. Every student keeps an individual checkpoint and
+remains responsible for explaining sampled pair artifacts.</p>
+<h2 id="7-how-to-use-extensions-well">7. How to use extensions well</h2>
+<p>An extension should answer a sharper question, not merely import a larger model.
+Strong extensions include:</p>
+<ul>
+<li>a fair ablation;</li>
+<li>a robustness or sensitivity check;</li>
+<li>a measured compute/label trade-off;</li>
+<li>a failure-recovery experiment;</li>
+<li>a better uncertainty analysis;</li>
+<li>an automated invariant that prevents an invalid experiment.</li>
+</ul>
+<p>Weak extensions include adding models without a question, increasing compute
+until a score improves, or presenting a complex library call that the team
+cannot explain.</p>
+<h2 id="8-peer-support-boundaries">8. Peer support boundaries</h2>
+<p>Students may explain concepts, review protocols, and debug environment problems
+together. Teams must not exchange completed assessed notebooks, result files,
+claim rows, or individual-verification answers. When reusing an instructor
+checkpoint, identify it as course-provided and regenerate the assessed evidence.</p>
+</main></body></html>

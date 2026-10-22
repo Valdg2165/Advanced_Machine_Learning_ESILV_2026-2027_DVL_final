@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>failure_modes</title><link rel="stylesheet" href="../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../index.html">Course start</a> · <a href="../../00_start/SETUP.html">Setup</a> · <a href="../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="td3-failure-modes-and-recovery">TD3 failure modes and recovery</h1>
+<table>
+<thead>
+<tr>
+<th>Symptom/anti-pattern</th>
+<th>Why the evidence fails</th>
+<th>Recovery check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Action quantity used as action index</td>
+<td>the wrong order is sent to Gymnasium</td>
+<td>map indices through ORDER_QUANTITIES</td>
+</tr>
+<tr>
+<td>Reward and cost signs mixed</td>
+<td>higher reward may be reported as higher cost</td>
+<td>assert reward equals negative reconstructed cost</td>
+</tr>
+<tr>
+<td>Different seeds per baseline</td>
+<td>policies face different demand paths</td>
+<td>reuse the exact public seed tuple</td>
+</tr>
+<tr>
+<td>Reward-only conclusion</td>
+<td>service and resource risks disappear</td>
+<td>report fill, unmet demand, stock, and orders with cost</td>
+</tr>
+<tr>
+<td>Time limit treated as terminal state</td>
+<td>later TD targets are defined incorrectly</td>
+<td>record that this environment truncates at horizon</td>
+</tr>
+</tbody>
+</table>
+<p>If recovery changes a data boundary, origin, seed set, reward, model order, or
+frozen artifact, invalidate affected metrics and rerun the declared comparison.</p>
+</main></body></html>

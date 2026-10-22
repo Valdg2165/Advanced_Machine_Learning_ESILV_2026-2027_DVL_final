@@ -1,0 +1,243 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DIAGNOSTIC_AND_BRIDGE_PATHS</title><link rel="stylesheet" href="../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../index.html">Course start</a> · <a href="../00_start/SETUP.html">Setup</a> · <a href="../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="ungraded-diagnostic-and-bridge-paths">Ungraded Diagnostic and Bridge Paths</h1>
+<blockquote>
+<p><strong>Complete before TD1.</strong><br/>
+<strong>Purpose:</strong> choose useful support, not rank students.<br/>
+<strong>Submission:</strong> only the readiness result and unresolved needs; diagnostic
+mistakes are not graded.</p>
+</blockquote>
+<p>Complete the runtime preflight in the
+<a href="../00_start/START_HERE.html"><code>student start guide</code></a> before assigning
+a readiness status. An incomplete extraction is a packaging problem, not a
+statistics result.</p>
+<h2 id="1-what-the-diagnostic-measures">1. What the diagnostic measures</h2>
+<p>The diagnostic checks prerequisites needed to benefit from the module:</p>
+<ul>
+<li>environment and notebook execution;</li>
+<li>Python and tabular-data fluency;</li>
+<li>basic probability and metric interpretation;</li>
+<li>evaluation roles, temporal leakage awareness, and fair comparison;</li>
+<li>reproducible working habits.</li>
+</ul>
+<p>It does not test forecasting models or reinforcement-learning algorithms before
+they are taught. The diagnostic checks only the prerequisites required to learn
+them safely.</p>
+<h2 id="2-readiness-scale">2. Readiness scale</h2>
+<p>For each check, record one status:</p>
+<ul>
+<li><strong>Independent:</strong> completed and explained without a hint;</li>
+<li><strong>Supported:</strong> completed after a hint, example, or documentation lookup;</li>
+<li><strong>Not yet:</strong> incomplete, or completed without being able to explain the result.</li>
+</ul>
+<p>Documentation lookup is normal professional practice. Copying a result that you
+cannot explain is <code>Not yet</code>.</p>
+<h2 id="3-diagnostic-checks">3. Diagnostic checks</h2>
+<h3 id="a-environment-and-reproducibility">A. Environment and reproducibility</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Check</th>
+<th>Evidence to retain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1</td>
+<td>Create/activate the approved course environment and print Python plus key package versions</td>
+<td><code>diagnostic/environment.txt</code></td>
+</tr>
+<tr>
+<td>D2</td>
+<td>Execute the provided smoke notebook from a clean kernel and save its declared output</td>
+<td>Executed notebook and output file</td>
+</tr>
+<tr>
+<td>D3</td>
+<td>Set a seed, run the same small stochastic function twice, and explain what is and is not guaranteed to repeat</td>
+<td>Short note plus outputs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b-python-and-data-handling">B. Python and data handling</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Check</th>
+<th>Evidence to retain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D4</td>
+<td>Write a function with inputs, return value, and one assertion for an edge case</td>
+<td>Python file or notebook cell</td>
+</tr>
+<tr>
+<td>D5</td>
+<td>Load a dated demand table; report shape, column types, missingness, date range, duplicate dates, and target summary without manually counting rows</td>
+<td>Machine-readable summary and short interpretation</td>
+</tr>
+<tr>
+<td>D6</td>
+<td>Select rows and columns, create one derived feature without overwriting the raw table, and save the result</td>
+<td>Code plus saved sample</td>
+</tr>
+</tbody>
+</table>
+<h3 id="c-statistics-and-evaluation">C. Statistics and evaluation</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Check</th>
+<th>Evidence to retain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D7P</td>
+<td>Compute an empirical event probability, its complement, and an expected count for a stated batch size; explain why the observed rate is an estimate</td>
+<td>Calculation plus two-sentence interpretation</td>
+</tr>
+<tr>
+<td>D7</td>
+<td>Explain mean versus standard deviation using a supplied set of repeated metric values</td>
+<td>Three-to-five sentence explanation</td>
+</tr>
+<tr>
+<td>D8</td>
+<td>Choose an appropriate metric for one demand-forecasting or stochastic-policy scenario and identify one limitation</td>
+<td>Short justified choice</td>
+</tr>
+<tr>
+<td>D9</td>
+<td>Distinguish training, development, and protected-evaluation roles; identify future leakage in a supplied temporal-split example</td>
+<td>Corrected protocol diagram or note</td>
+</tr>
+<tr>
+<td>D10</td>
+<td>Explain why two models must be compared on the same folds or evaluation cases</td>
+<td>Short explanation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="d-technical-communication">D. Technical communication</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Check</th>
+<th>Evidence to retain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D11</td>
+<td>Turn one metric result into a narrow claim containing task, comparator, metric, and limitation</td>
+<td>One claim sentence</td>
+</tr>
+<tr>
+<td>D12</td>
+<td>Follow a relative path from a report statement to the configuration and result file that support it</td>
+<td>Three resolved paths</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-choose-a-temporary-path">4. Choose a temporary path</h2>
+<h3 id="foundation-bridge">Foundation bridge</h3>
+<p>Choose this path when any of D1, D2, D4, D5, D7P, D8, or D9 is <code>Not yet</code>, or when
+several other checks require support. Complete only the relevant bridge units
+before TD1. Their exit checks support self-routing and help requests; they are
+not collected or graded.</p>
+<p>This path is intended for students who are beginners with the course's technical
+prerequisites. It does not mean they are incapable of advanced ML.</p>
+<h3 id="core-refresh">Core refresh</h3>
+<p>Choose this path when all critical checks are at least <code>Supported</code> and most are
+<code>Independent</code>. Review the weak categories, then begin TD1 on the Core route.</p>
+<p>This will be the normal entry route for many students who have completed an
+introductory ML course but have not yet practised rigorous evidence packaging.</p>
+<h3 id="extension-preparation">Extension preparation</h3>
+<p>Choose this path when all checks are <code>Independent</code> and you can also write a
+simple test for data shape/leakage assumptions. Prepare the extension tooling,
+but do not skip the Core route or replace the required baseline with a complex
+model.</p>
+<p>The route is selected per topic. A student may use Extension Preparation for
+Python engineering and the Support route for reinforcement learning.</p>
+<h2 id="5-foundation-bridge-units">5. Foundation bridge units</h2>
+<p>Each linked unit is a complete 30-minute micro-lesson with a worked example,
+20-minute practice, exit check, and recovery answer. Completing every unit takes
+at most <strong>150 minutes (2h30)</strong>, but most students should complete only the units
+selected by the diagnostic. See the <a href="bridge/README.html">bridge index</a>.</p>
+<h3 id="b0--environment-and-notebook-discipline"><a href="bridge/B0_ENVIRONMENT_AND_NOTEBOOK_DISCIPLINE.html">B0 — Environment and notebook discipline</a></h3>
+<p><strong>Study:</strong> environments, kernels, relative paths, restarting/running all cells,
+and saving text/CSV/JSON evidence.<br/>
+<strong>Exit check:</strong> D1–D3 are at least <code>Supported</code>, and the smoke notebook works from
+a fresh kernel.</p>
+<h3 id="b1--python-essentials-for-experiments"><a href="bridge/B1_PYTHON_FOR_EXPERIMENTS.html">B1 — Python essentials for experiments</a></h3>
+<p><strong>Study:</strong> functions, loops/comprehensions, dictionaries, exceptions, assertions,
+and deterministic parameter/config handling.<br/>
+<strong>Exit check:</strong> D4 is <code>Independent</code>; a small function passes a normal and edge-case
+assertion.</p>
+<h3 id="b2--arrays-and-dataframes"><a href="bridge/B2_ARRAYS_AND_DATAFRAMES.html">B2 — Arrays and dataframes</a></h3>
+<p><strong>Study:</strong> shapes, dtypes, missing values, filtering, grouping, non-mutating
+feature construction, and target separation.<br/>
+<strong>Exit check:</strong> D5–D6 are at least <code>Supported</code>, with an accurate machine-readable
+summary.</p>
+<h3 id="b3--evaluation-and-leakage"><a href="bridge/B3_EVALUATION_AND_LEAKAGE.html">B3 — Evaluation and leakage</a></h3>
+<p><strong>Study:</strong> training/validation/test roles, fit versus transform, cross-validation,
+baseline, metric direction, repeated evidence, and data leakage.<br/>
+<strong>Exit check:</strong> D7P and D7–D10 are at least <code>Supported</code>; D9 must be <code>Independent</code> before
+assessed test evidence is generated.</p>
+<h3 id="b4--evidence-and-technical-writing"><a href="bridge/B4_EVIDENCE_AND_TECHNICAL_WRITING.html">B4 — Evidence and technical writing</a></h3>
+<p><strong>Study:</strong> narrow claims, relative artifact paths, result tables, assumptions,
+and limitations.<br/>
+<strong>Exit check:</strong> D11–D12 are <code>Independent</code> for one supplied example.</p>
+<h2 id="6-core-refresh-menu">6. Core-refresh menu</h2>
+<p>Complete only the units corresponding to <code>Supported</code> diagnostic checks:</p>
+<ul>
+<li>temporal-boundary and feature-availability exercise;</li>
+<li>metric and variability interpretation exercise;</li>
+<li>reproducible seed/config exercise;</li>
+<li>claim-to-artifact trace exercise;</li>
+<li>dataframe missingness and type exercise.</li>
+</ul>
+<p>The goal is to repair a specific prerequisite, not create busywork.</p>
+<h2 id="7-extension-preparation-menu">7. Extension-preparation menu</h2>
+<p>After all core readiness checks pass, advanced students may prepare:</p>
+<ul>
+<li>automated invariant tests for split boundaries and result schemas;</li>
+<li>configuration-driven repeated experiments;</li>
+<li>temporal-boundary and origin invariant tests;</li>
+<li>optional forecasting uncertainty diagnostics;</li>
+<li>RL environment and reward invariant tests;</li>
+<li>bounded multi-seed sensitivity tooling;</li>
+<li>compact command-line reproduction in addition to notebooks.</li>
+</ul>
+<p>These are preparation aids. Optional ungraded extension tasks remain in the
+relevant lab and are reviewed only after valid Core evidence.</p>
+<h2 id="8-just-in-time-topic-refreshers">8. Just-in-time topic refreshers</h2>
+<p>The diagnostic deliberately does not pre-test material that the course teaches.
+If retrieval practice shows that the new topic is still unclear, use one short
+refresher immediately before the corresponding practical:</p>
+<ul>
+<li><a href="TOPIC_REFRESH_TIME_SERIES.html"><code>TOPIC_REFRESH_TIME_SERIES.md</code></a> before TD1:
+temporal order, origins, horizon, seasonal-naive, and rolling-origin checks;</li>
+<li><a href="TOPIC_REFRESH_RL.html"><code>TOPIC_REFRESH_RL.md</code></a> before TD3: MDP elements,
+return, Bellman target, Q-learning update, and controlled policy evaluation.</li>
+</ul>
+<p>These refreshers are ungraded and contain no assessed dataset results. They do
+not authorize skipping the lecture, starter notebook, or Core evidence gates.</p>
+<h2 id="9-if-you-are-still-blocked">9. If you are still blocked</h2>
+<p>Use <code>templates/HELP_REQUEST.md</code> and identify:</p>
+<ol>
+<li>the first check that fails;</li>
+<li>expected versus observed behaviour;</li>
+<li>environment and command/cell used;</li>
+<li>the smallest relevant error excerpt;</li>
+<li>what you already tried;</li>
+<li>whether restricted data or credentials are involved—never paste them.</li>
+</ol>
+<p>The teaching team should respond to the earliest failure, not ask you to rerun an
+entire project blindly.</p>
+</main></body></html>

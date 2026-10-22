@@ -1,0 +1,8 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>COLAB_PREFLIGHT</title><link rel="stylesheet" href="../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../index.html">Course start</a> · <a href="../00_start/SETUP.html">Setup</a> · <a href="../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="optional-colab-route--not-live-tested-for-this-release">Optional Colab route — not live-tested for this release</h1>
+<p>The verified route is local Python 3.12. <strong>COLAB = NOT RUN</strong> for this exact ZIP. Earlier runtime receipts do not apply to it.</p>
+<p>If you choose Colab, upload and extract the complete course ZIP in a fresh runtime. Keep the <code>shared/</code> folder, data and requirements together. Change the notebook working directory to the extracted folder containing <code>uv.lock</code>, then install:</p>
+<pre><code class="language-python">%pip install -r requirements-colab.txt
+</code></pre>
+<p>Restart the runtime if requested, return to the extracted course folder, and run <code>scripts/check_setup.py</code>. Open the selected starter and run its setup cell before any scientific cells. The starter locates the course root; it does <strong>not</strong> install dependencies automatically. Colab notebooks do not carry the other course files automatically.</p>
+<p>If the runtime's Python version or preinstalled packages conflict with these pins, use the verified <a href="../00_start/SETUP.html">local setup</a>. Never upload private evaluation or instructor files.</p>
+</main></body></html>

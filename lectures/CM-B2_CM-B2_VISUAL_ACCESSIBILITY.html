@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CM-B2_CM-B2_VISUAL_ACCESSIBILITY</title><link rel="stylesheet" href="../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../index.html">Course start</a> · <a href="../00_start/SETUP.html">Setup</a> · <a href="../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="cm-b2-visual-descriptions">CM-B2 visual descriptions</h1>
+<p>These descriptions accompany the deterministic diagrams rendered in the
+student PDF. Their source is
+<code>scripts/presentations/render_lecture_pdfs.py</code>. The environment transcript is
+reproducible from <code>shared/inventory_env.py</code> with reset seed <code>11</code>.</p>
+<h2 id="slide-05--agent-environment-loop">Slide 05 — Agent-environment loop</h2>
+<p>An agent sends an action to the environment. The environment returns the next
+state and reward. A separate evidence ledger records versions, seeds, costs,
+and limitations. The environment contract determines what a policy result can
+mean.</p>
+<h2 id="slide-06--mdp-tuple">Slide 06 — MDP tuple</h2>
+<p>Five labelled boxes show state, action, transition, reward, and discount.
+Changing one component creates a different learning problem and invalidates
+comparisons against the previous environment.</p>
+<h2 id="slide-08--environment-contract-and-trace">Slide 08 — Environment contract and trace</h2>
+<p>The contract card states <code>MultiDiscrete([9, 2])</code> observations,
+<code>Discrete(3)</code> actions, and reset state <code>[1, 0]</code> for seed <code>11</code>. Four fixed
+actions <code>2, 1, 0, 2</code> yield next states <code>[2, 0]</code>, <code>[3, 0]</code>, <code>[1, 0]</code>, and
+<code>[3, 1]</code>, with rewards <code>-1.50</code>, <code>-1.35</code>, <code>-0.30</code>, and <code>-1.80</code>. Neither
+termination nor truncation occurs during these four steps.</p>
+<h2 id="slide-09--reward-cost-ledger">Slide 09 — Reward cost ledger</h2>
+<p>Three boxes decompose reward into order, holding, and unmet-demand costs. A
+formula below them shows that reward is the negative sum of those costs.
+Omitted operational costs remain specification choices and incentives.</p>
+<h2 id="slide-14--bellman-action-continuations">Slide 14 — Bellman action continuations</h2>
+<p>One state branches into three available actions. Each branch leads to an
+immediate reward plus discounted best next-state value. The first action is
+fixed before the later maximum is taken.</p>
+<h2 id="slide-20--terminal-aware-q-learning-target">Slide 20 — Terminal-aware Q-learning target</h2>
+<p>A decision branch asks whether a transition truly terminated. If yes, the
+target is the immediate reward. Otherwise, including a time-limit truncation,
+the target adds the discounted next-state value. The executable definition is
+<code>shared/rl.py:20-23</code>.</p>
+<h2 id="slide-21--auditable-q-learning-update">Slide 21 — Auditable Q-learning update</h2>
+<p>Four connected boxes show the sequence old Q, target, temporal-difference
+error, and new Q. Each box states the operation to perform but withholds the
+numerical answer for the instructor-led debrief. The prompt separately asks
+what changes on genuine termination.</p>
+<h2 id="slide-27--trainingevaluation-separation">Slide 27 — Training/evaluation separation</h2>
+<p>A pipeline trains Q with exploration on development seeds, freezes the Q-table,
+and evaluates without exploration on disjoint seeds. Training return is not
+presented as final policy evidence.</p>
+<h2 id="slide-28--fair-policy-comparison">Slide 28 — Fair policy comparison</h2>
+<p>Random actions, a transparent reorder heuristic, and a frozen learned policy
+enter one shared evaluator. The evaluator uses the same environment version,
+seeds, and KPIs, then reports distributions of cost, service, and uncertainty.</p>
+<h2 id="slide-29--repeated-policy-outcomes">Slide 29 — Repeated policy outcomes</h2>
+<p>Three horizontal dot ranges show illustrative repeated outcomes for random,
+reorder, and frozen Q policies. Each row displays dispersion and a marked
+median. The fixed example teaches paired distribution comparison, not a claimed
+empirical ranking.</p>
+</main></body></html>

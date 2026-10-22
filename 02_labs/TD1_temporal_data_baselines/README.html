@@ -1,0 +1,101 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>README</title><link rel="stylesheet" href="../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../index.html">Course start</a> · <a href="../../00_start/SETUP.html">Setup</a> · <a href="../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><p><a href="student_starter.ipynb" download>Core notebook</a> · <a href="support_starter.ipynb" download>Support notebook</a></p><h1 id="td1--temporal-data-contract-and-forecasting-baselines">TD1 — Temporal data contract and forecasting baselines</h1>
+<p><strong>Duration:</strong> 3 hours<br/>
+<strong>Mode:</strong> paired implementation, individual evidence and interpretation<br/>
+<strong>Scope:</strong> Time Series and Reinforcement Learning only<br/>
+<strong>CPU profile:</strong> verified local Python 3.11/3.12; no GPU required</p>
+<h2 id="decision-scenario">Decision scenario</h2>
+<p>Define a defensible daily-demand forecasting task before selecting a model. The operations team needs a 28-day planning forecast, but the protected final horizon cannot be used for baseline choice.</p>
+<h2 id="student-route-at-a-glance">Student route at a glance</h2>
+<ul>
+<li>01 — <strong>WHERE AM I?</strong> Time Series: first practical after CM-B1, before TD2 and TDo1.</li>
+<li>02 — <strong>TODAY'S OBJECTIVE:</strong> State the daily target/time contract and establish three target-safe baselines.</li>
+<li>03 — <strong>WHAT YOU NEED:</strong> The locked local Python 3.11/3.12 environment and the public development data/card.</li>
+<li>04 — <strong>CORE ROUTE:</strong> <a href="student_starter.ipynb">Open the Core notebook</a>.</li>
+<li>05 — <strong>SUPPORT ROUTE:</strong> <a href="support_starter.ipynb">Open the guided Support notebook</a>; it has the same assessed Core and 20/20 ceiling.</li>
+<li>06 — <strong>CHECKPOINTS:</strong> Follow the <a href="#180-minute-route">180-minute route</a>.</li>
+<li>07 — <strong>WHAT TO SUBMIT / RETAIN:</strong> Use <a href="#deliverables">Deliverables</a> and <a href="#submission-hygiene">Submission hygiene</a>.</li>
+<li>08 — <strong>COMMON FAILURE MODES:</strong> See <a href="failure_modes.html">TD1 recovery checks</a>.</li>
+<li>09 — <strong>WHAT THIS PREPARES NEXT:</strong> Freeze the temporal contract and baseline evidence for TD2.</li>
+</ul>
+<h2 id="learning-outcomes">Learning outcomes</h2>
+<ul>
+<li>state the unit, target, frequency, forecast origin, horizon, and prediction-time feature availability</li>
+<li>verify date ordering, uniqueness, daily continuity, missingness, zeros, and stockout-censoring flags with executable invariants</li>
+<li>implement mean, last-value, and seven-day seasonal-naive baselines on one development-only temporal block</li>
+<li>interpret MAE and sMAPE without treating one validation block as universal evidence</li>
+</ul>
+<h2 id="before-class--verified-local-runtime">Before class — verified local runtime</h2>
+<p>From the course root run <code>uv sync --frozen</code>, then
+<code>uv run python scripts/check_setup.py</code>. Colab is an optional
+portability path governed by the release evidence for the exact archive in use;
+see <code>../COLAB_PREFLIGHT.md</code>.</p>
+<p>Read the applicable contract before modelling: <code>shared/datasets/cards/daily_demand.md</code>.</p>
+<h2 id="initialise-the-progressive-portfolio">Initialise the progressive portfolio</h2>
+<p>Before leaving TD1, copy the <strong>contents</strong> of
+<code>03_capstone/student/templates/model_repository/</code> to the stable-pair repository
+root. Record the first data hash, temporal boundary, baseline evidence,
+<strong>provisional development claim candidate</strong>, and contribution row. Reuse that
+repository through TD2–TD4 and TDo1–TDo2;
+this is evidence capture inside the six sessions, not a seventh session.</p>
+<h2 id="capstone-evidence-boundary">Capstone evidence boundary</h2>
+<p>Append this session's evidence and a <strong>provisional development claim
+candidate</strong> to the portfolio. It may support model/reward choice and provenance,
+but it is not a final empirical release claim. TDo1 or TDo2 must later confirm,
+revise, or reject it using the protected/controlled protocol.</p>
+<h2 id="choose-your-route">Choose your route</h2>
+<ul>
+<li><strong>Support:</strong> open <code>support_starter.ipynb</code> for smaller steps, contracts, assertions, micro-examples, and recovery checkpoints.</li>
+<li><strong>Core:</strong> open <code>student_starter.ipynb</code> for the less-scaffolded implementation.</li>
+<li><strong>Extension:</strong> attempt the bounded optional task only after valid Core evidence.</li>
+</ul>
+<p>Support and Core share the same outcomes and full 20/20 ceiling. Extensions add
+no points and cannot repair invalid Core evidence.</p>
+<h2 id="180-minute-route">180-minute route</h2>
+<ul>
+<li>0–20 min — verified runtime, data hash, and forecast decision statement</li>
+<li>20–55 min — temporal data contract and executable index invariants</li>
+<li>55–85 min — trend, weekly structure, zeros, promotions, holidays, and stockout censoring</li>
+<li>85–130 min — mean, last-value, and seasonal-naive baselines on a frozen 28-day development block</li>
+<li>130–165 min — MAE/sMAPE table, aligned plot, and baseline failure analysis</li>
+<li>165–180 min — evidence freeze, claim boundary, and exit ticket</li>
+</ul>
+<h2 id="assessed-core">Assessed Core</h2>
+<ul>
+<li>Use only <code>daily_demand_development.csv</code>; do not read or infer protected final targets.</li>
+<li>Assert 1,433 unique, strictly increasing daily dates with no gap before modelling.</li>
+<li>Declare that <code>stockout_flag=1</code> marks censored recorded sales, not latent unconstrained demand.</li>
+<li>Freeze the final 28 development days as one baseline comparison block; fit every baseline on earlier rows only.</li>
+<li>Keep this public 28-day practice block distinct from TD2's three 14-day comparison windows and TDo1's separate protected 28-day final horizon.</li>
+<li>Implement historical-mean, last-value, and lag-7 seasonal-naive forecasts with exactly 28 aligned predictions.</li>
+<li>Report MAE and sMAPE for all three baselines plus one failure period and one operational limitation.</li>
+</ul>
+<h2 id="supportcoreextension-parity">Support/Core/Extension parity</h2>
+<ul>
+<li><strong>Beginner/Support:</strong> complete every assessed decision and interpretation; prewritten checks are navigation, not evidence credit.</li>
+<li><strong>Intermediate/Core:</strong> implement directly from the contract and add one justified diagnostic.</li>
+<li><strong>Advanced/Extension:</strong> freeze valid Core first, then record the separate configuration and compute budget.</li>
+</ul>
+<h2 id="optional-advanced-extension--ungraded">Optional Advanced extension — ungraded</h2>
+<p>Without changing the frozen 28-day block, decompose baseline error by weekday and stockout-flag status. Treat small slices as diagnostic, not as a new model-selection leaderboard.</p>
+<h2 id="evidence-contract">Evidence contract</h2>
+<p>Every substantive claim identifies the data/environment version, protocol,
+baseline, metric, repeated evidence, reproducible code/configuration, and a
+material limitation. Use public base seeds <code>11, 23, 37, 51, 71</code> wherever the
+session requires repeated stochastic evidence.</p>
+<h2 id="deliverables">Deliverables</h2>
+<ul>
+<li>completed notebook</li>
+<li>temporal data contract and invariant results</li>
+<li>three-baseline metric table</li>
+<li>aligned actual-versus-forecast figure</li>
+<li>one bounded baseline claim and limitation</li>
+</ul>
+<h2 id="submission-hygiene">Submission hygiene</h2>
+<ul>
+<li>restart the kernel and run top to bottom;</li>
+<li>keep outputs concise and preserve failed or partial evidence;</li>
+<li>never include private teaching or evaluation material;</li>
+<li>update the pair evidence, claim-candidate/decision, and contribution records before leaving;</li>
+<li>freeze the relevant configuration, artifact hashes, and commit/checkpoint.</li>
+</ul>
+</main></body></html>

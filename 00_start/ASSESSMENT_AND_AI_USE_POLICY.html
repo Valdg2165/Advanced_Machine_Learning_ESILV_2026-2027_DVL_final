@@ -1,0 +1,136 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ASSESSMENT_AND_AI_USE_POLICY</title><link rel="stylesheet" href="../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../index.html">Course start</a> · <a href="../00_start/SETUP.html">Setup</a> · <a href="../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="assessment-evidence-collaboration-and-ai-use-policy">Assessment, evidence, collaboration, and AI-use policy</h1>
+<p><strong>Status:</strong> accepted by the course owner for the internal teaching release<br/>
+<strong>Replacement rule:</strong> an official LMS rule, if different, supersedes this
+working rule and triggers a complete rebuild and re-audit.</p>
+<h2 id="1-assessment-structure">1. Assessment structure</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th style="text-align:right">Weight</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TD1–TD2 forecasting foundations</td>
+<td style="text-align:right">10%</td>
+<td>Mean of the two normalized 20-point local rubrics</td>
+</tr>
+<tr>
+<td>TD3–TD4 RL foundations</td>
+<td style="text-align:right">10%</td>
+<td>Mean of the two normalized 20-point local rubrics</td>
+</tr>
+<tr>
+<td>TDo1 forecasting release</td>
+<td style="text-align:right">10%</td>
+<td>Normalized 20-point controlled-release rubric</td>
+</tr>
+<tr>
+<td>TDo2 RL safety release</td>
+<td style="text-align:right">10%</td>
+<td>Normalized 20-point controlled-release rubric</td>
+</tr>
+<tr>
+<td>Reproducible two-strand capstone</td>
+<td style="text-align:right">40%</td>
+<td>Scientific validity 15%; replay and claims-to-evidence 15%; operational/safety synthesis 10%</td>
+</tr>
+<tr>
+<td>Individual verification</td>
+<td style="text-align:right">20%</td>
+<td>Standardized practical checkpoint 12%; distributed targeted questions 8%</td>
+</tr>
+</tbody>
+</table>
+<p>Total: <strong>100%</strong>. There is no opaque bonus, extension bonus, file-size score,
+post-hoc curve, or automatic grade inflation.</p>
+<h2 id="2-common-scientific-standard">2. Common scientific standard</h2>
+<p>Each performance claim must identify:</p>
+<ol>
+<li>data or environment version and hash;</li>
+<li>permitted development/protected boundary;</li>
+<li>evaluation protocol and cases/seeds;</li>
+<li>baseline or comparator;</li>
+<li>metric and direction;</li>
+<li>repeated evidence or explicit reason repetition is impossible;</li>
+<li>reproducible code, configuration, and artifact path;</li>
+<li>one known limitation and a condition that could reverse the conclusion.</li>
+</ol>
+<p>Support and Extension routes do not change this standard. Valid Core evidence can
+earn full marks.</p>
+<h2 id="3-scientific-invalidation-conditions">3. Scientific invalidation conditions</h2>
+<p>The relevant scientific criterion receives no credit when its evidence depends
+on any of the following:</p>
+<ul>
+<li>future or target leakage;</li>
+<li>selection or tuning on the protected forecasting horizon;</li>
+<li>RL selection on protected final evaluation seeds;</li>
+<li>missing or unserious baseline;</li>
+<li>different origins, episodes, metrics, or budgets used to favour one method;</li>
+<li>removed failed folds/episodes or favourite-seed reporting;</li>
+<li>RL conclusions based only on training reward;</li>
+<li>an unreadable, missing, or irreproducible configuration/result artifact;</li>
+<li>a claim broader than the data, environment, metrics, or evaluation support.</li>
+</ul>
+<p>An honest failed result with a correct protocol may still earn substantial
+credit. An attractive number from an invalid protocol may not.</p>
+<h2 id="4-progressive-portfolio">4. Progressive portfolio</h2>
+<p>TD1–TD4 produce development evidence, method decisions, configurations,
+provenance, and contribution records. Their claims must be explicitly labelled
+development_only; they are not controlled capstone release claims.</p>
+<p>TDo1 and TDo2 each produce one controlled release receipt and at least one
+eligible capstone claim row. Protected evidence is inspected once under the
+declared frozen decision. Reopening model or policy selection after that receipt
+invalidates the release claim.</p>
+<h2 id="5-capstone">5. Capstone</h2>
+<p>The capstone is a consolidation, not a new modelling competition. It contains:</p>
+<ul>
+<li>one TDo1 forecasting release;</li>
+<li>one TDo2 RL policy release;</li>
+<li>one cross-strand operational and safety synthesis;</li>
+<li>reproducible replay, limitations, fallback, monitoring, and rollback.</li>
+</ul>
+<p>No supervised-classification or evolutionary-ML empirical strand is required or
+accepted in place of these two release strands.</p>
+<h2 id="6-pair-work-and-individual-accountability">6. Pair work and individual accountability</h2>
+<p>Students work in stable pairs with alternating roles:</p>
+<ul>
+<li>experiment lead;</li>
+<li>evidence and reproducibility steward.</li>
+</ul>
+<p>Each session updates CONTRIBUTIONS.csv. Both partners are responsible for the
+entire submission. During individual verification, each student may be asked to
+reproduce a result, interpret an artifact written by the partner, repair one
+protocol defect, or explain the operational limitation.</p>
+<p>Inability to explain or reproduce pair work affects the individual component and
+may trigger an authorship review.</p>
+<h2 id="7-generative-ai">7. Generative AI</h2>
+<p>Generative AI is permitted as a disclosed assistant for explanation, debugging,
+test suggestions, structure, or language review. For every material use, record:</p>
+<ul>
+<li>tool/model label and date;</li>
+<li>purpose and prompt summary;</li>
+<li>code, text, or decision reused;</li>
+<li>verification performed;</li>
+<li>defects found and corrected;</li>
+<li>accountable student.</li>
+</ul>
+<p>Students remain responsible for licensing, confidentiality, correctness, and
+authorship. Never provide protected labels, hidden seeds, credentials, or another
+team's assessed work to an external system. Undisclosed generated content,
+fabricated citations/results, or code that cannot be explained receives no
+credit and may be referred under ESILV integrity procedures.</p>
+<h2 id="8-collaboration-boundaries">8. Collaboration boundaries</h2>
+<p>Allowed: concept discussion, documentation links, protocol review, environment
+debugging, and peer critique.</p>
+<p>Not allowed: exchanging completed assessed notebooks, result files, Q-tables,
+claim rows, protected receipts, individual-checkpoint answers, or contributions
+that are not accurately attributed.</p>
+<h2 id="9-submission">9. Submission</h2>
+<p>The submitted LMS item is an immutable Git tag/commit reference plus the
+required archive. submission.yaml records students, commit/tag, environment,
+data/environment hashes, and AI declaration. All paths in claims_evidence.csv
+must resolve inside the submitted repository.</p>
+</main></body></html>

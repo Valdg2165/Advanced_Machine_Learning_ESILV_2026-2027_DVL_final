@@ -1,0 +1,87 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>B3_EVALUATION_AND_LEAKAGE</title><link rel="stylesheet" href="../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../index.html">Course start</a> · <a href="../../00_start/SETUP.html">Setup</a> · <a href="../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="b3--temporal-evaluation-and-controlled-policy-comparison">B3 — Temporal Evaluation and Controlled Policy Comparison</h1>
+<blockquote>
+<p><strong>Timebox:</strong> 30 minutes (5 min lesson/example, 20 min practice, 5 min exit check)<br/>
+<strong>Status:</strong> ungraded support; do not submit this work</p>
+</blockquote>
+<h2 id="why-this-matters">Why this matters</h2>
+<p>An observed event rate is an empirical probability. Its complement is <code>1 - p</code>,
+and <code>n * p</code> is an expected count, not a promise for the next batch.</p>
+<p>For forecasting, development origins must preserve time: every fitted value and
+feature at origin <code>t</code> must come from information available by <code>t</code>. Models must
+use the same origins, horizons, target observations, and declared metrics.
+Final protected-horizon evidence is opened once after the choice is frozen.</p>
+<p>For reinforcement learning, training reward is not policy evidence. Freeze the
+policy, evaluate candidate and baselines on the same unseen evaluation seeds,
+and report reward together with operational costs and safety failures.</p>
+<h2 id="worked-micro-example">Worked micro-example</h2>
+<pre><code class="language-python">import numpy as np
+
+actual = np.array([12.0, 9.0, 15.0])
+seasonal_naive = np.array([11.0, 10.0, 13.0])
+candidate = np.array([12.0, 11.0, 14.0])
+
+baseline_mae = float(np.mean(np.abs(actual - seasonal_naive)))
+candidate_mae = float(np.mean(np.abs(actual - candidate)))
+assert np.isclose(baseline_mae, 4 / 3)
+assert np.isclose(candidate_mae, 1.0)
+</code></pre>
+<p>The comparison is paired because both methods see the same target days. It says
+nothing about a protected horizon, a different season, or inventory cost.</p>
+<h2 id="practice--20-minutes">Practice — 20 minutes</h2>
+<p>First, suppose 18 of 120 simulated evaluation episodes contain a stockout.
+Compute the empirical probability, its complement, and the expected number of
+episodes with a stockout in 50 further episodes. State why the expected count is
+not a guarantee.</p>
+<p>Then classify each action as <code>safe</code>, <code>unsafe</code>, or <code>depends</code> and justify it:</p>
+<ol>
+<li>Choose SARIMA hyperparameters because they minimize protected-horizon MAE.</li>
+<li>Compare ETS and seasonal naive on identical rolling origins and horizons.</li>
+<li>Fit a demand scaler using all dates before creating temporal origins.</li>
+<li>Use a promotion variable known when the forecast is issued.</li>
+<li>Shuffle dates before forecasting the next seven days.</li>
+<li>Freeze a Q-table, then compare it with random and reorder-point policies on
+the same injected evaluation seeds.</li>
+<li>Select the best RL training seed and report only its reward.</li>
+<li>Report mean return but omit stockout rate and catastrophic-cost episodes.</li>
+</ol>
+<p>Finally, repair this protocol in five ordered steps:</p>
+<blockquote>
+<p>“Try models on all dates, choose the best final score, and deploy the RL run
+with the highest training reward.”</p>
+</blockquote>
+<p>Your repair must isolate development from protected evidence, freeze the
+forecasting and policy decisions, use paired evaluation cases, include
+baselines, and retain operational/safety metrics.</p>
+<h2 id="exit-check--5-minutes">Exit check — 5 minutes</h2>
+<ol>
+<li>What information may a model use at a rolling origin?</li>
+<li>Why must forecasting methods share origins and horizons?</li>
+<li>Why is RL training reward insufficient for release?</li>
+<li>If an observed event rate is <code>p</code>, what do <code>1 - p</code> and <code>n * p</code> mean?</li>
+</ol>
+<p>Mark B3 <code>Independent</code> only if actions 1, 2, 3, 5, 6, 7, and 8 are classified
+correctly and the repaired protocol keeps protected evidence outside selection.</p>
+<p>&lt;details&gt;
+&lt;summary&gt;Recovery answer&lt;/summary&gt;</p>
+<p>The probability is <code>18 / 120 = 0.15</code>, its complement is <code>0.85</code>, and the
+expected count in 50 episodes is <code>7.5</code>. An expectation is a repeated-sample
+average; one realised sample contains a whole number and can differ materially.</p>
+<ol>
+<li><strong>Unsafe:</strong> protected evidence becomes model selection data.</li>
+<li><strong>Safe:</strong> the paired temporal comparison controls evaluation cases.</li>
+<li><strong>Unsafe:</strong> future distribution information enters earlier origins.</li>
+<li><strong>Depends:</strong> safe only if its value and encoding are genuinely available at
+every origin and applied under the frozen contract.</li>
+<li><strong>Unsafe:</strong> future observations can appear in the apparent past.</li>
+<li><strong>Safe:</strong> policy and comparators are frozen and receive paired unseen cases.</li>
+<li><strong>Unsafe:</strong> selecting and reporting a favourable seed hides instability.</li>
+<li><strong>Unsafe for release:</strong> mean return alone hides operational and safety risk.</li>
+</ol>
+<p>One repair is: (1) freeze development and protected temporal/evaluation
+boundaries; (2) declare baselines, metrics, origins, horizons, and seed budgets;
+(3) compare forecasting models only on development origins and train RL using
+training seeds; (4) freeze the chosen forecaster and Q-table; (5) evaluate once
+against seasonal-naive and transparent policies on protected horizons and
+paired unseen seeds, reporting all declared runs, costs, failures, and limits.</p>
+<p>&lt;/details&gt;</p>
+</main></body></html>

@@ -1,0 +1,215 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SYLLABUS</title><link rel="stylesheet" href="../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../index.html">Course start</a> · <a href="../00_start/SETUP.html">Setup</a> · <a href="../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="advanced-machine-learning--esilv-syllabus">Advanced Machine Learning — ESILV syllabus</h1>
+<p><strong>Edition:</strong> R2 interactive course, private candidate under course-owner authority<br/>
+<strong>Teaching language:</strong> English<br/>
+<strong>Official academic year:</strong> pending authoritative ESILV record<br/>
+<strong>Official module code:</strong> pending authoritative ESILV record<br/>
+<strong>ECTS:</strong> pending authoritative ESILV record</p>
+<p>The pending fields are not official ESILV catalogue values and will be replaced
+only from the LMS or programme record.
+The course owner authorises this revision. Hours and assessment remain unchanged.
+The twelve-chapter interactive book is an optional explanation and recovery
+resource, not extra assessed work. This revised payload needs its own archive
+and acceptance evidence. Public
+redistribution and external certification remain
+explicitly outside this release.</p>
+<h2 id="purpose">Purpose</h2>
+<p>This course teaches engineers to make defensible forecasting and sequential-
+decision claims. Algorithmic sophistication is subordinate to a valid data or
+environment contract, a serious baseline, fair repeated evaluation, reproducible
+artifacts, and an honest limitation.</p>
+<blockquote>
+<p>Every performance claim must identify the data or environment version,
+evaluation protocol, baseline, metric, repeated evidence, reproducible code
+and configuration, and at least one known limitation.</p>
+</blockquote>
+<h2 id="contact-hours-and-ownership">Contact hours and ownership</h2>
+<table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Owner</th>
+<th style="text-align:right">Hours</th>
+<th>Released content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CM-S1</td>
+<td>Sana Ben Hmida</td>
+<td style="text-align:right">3</td>
+<td>Data preprocessing, ensemble learning, active learning; Sana-owned lecture artifacts are distributed outside this repository</td>
+</tr>
+<tr>
+<td>CM-S2</td>
+<td>Sana Ben Hmida</td>
+<td style="text-align:right">3</td>
+<td>Evolutionary ML and distributed evolutionary algorithms; Sana-owned lecture artifacts are distributed outside this repository</td>
+</tr>
+<tr>
+<td>CM-B1</td>
+<td>Badr Tajini</td>
+<td style="text-align:right">3</td>
+<td>Time-series structure, trustworthy forecasting, rolling-origin evaluation, uncertainty</td>
+</tr>
+<tr>
+<td>CM-B2</td>
+<td>Badr Tajini</td>
+<td style="text-align:right">3</td>
+<td>MDPs, Bellman equations, tabular Q-learning, reward design, trustworthy policy evaluation</td>
+</tr>
+<tr>
+<td>TD1–TD4</td>
+<td>Badr Tajini for the assigned group</td>
+<td style="text-align:right">12</td>
+<td>Four three-hour Time-Series/RL tutorials</td>
+</tr>
+<tr>
+<td>TDo1–TDo2</td>
+<td>Badr Tajini for the assigned group</td>
+<td style="text-align:right">6</td>
+<td>Two three-hour controlled computer tutorials</td>
+</tr>
+</tbody>
+</table>
+<p>Totals are exactly <strong>12 h CM + 12 h TD + 6 h TDo = 30 h</strong>. The assigned
+group's complete 18-hour practical lane is split evenly: <strong>9 h Time Series and
+9 h Reinforcement Learning</strong>. No preprocessing, ensemble, active-learning, or
+evolutionary-ML practical is included in this release.</p>
+<h2 id="learning-outcomes">Learning outcomes</h2>
+<p>After the common Core route, every student can:</p>
+<ol>
+<li>define a time-series target, unit, frequency, origin, horizon, and
+prediction-time feature boundary;</li>
+<li>detect temporal leakage and test date/index assumptions;</li>
+<li>implement and defend mean, last-value, and seasonal-naive baselines;</li>
+<li>compare seasonal naive, ETS, and bounded SARIMA on identical rolling origins;</li>
+<li>interpret residual diagnostics, uncertainty, operational loss, and limits;</li>
+<li>specify an inventory MDP, reward decomposition, horizon, and truncation
+semantics;</li>
+<li>implement transparent random and reorder comparator policies;</li>
+<li>trace and implement tabular Q-learning without an opaque training framework;</li>
+<li>compare frozen policies over common evaluation seeds using cost, service,
+resource, and safety metrics;</li>
+<li>reproduce a result from versioned data/environment, configuration, code,
+seeds, and evidence paths;</li>
+<li>write a bounded operational recommendation and state what would reverse it.</li>
+</ol>
+<h2 id="relative-teaching-sequence">Relative teaching sequence</h2>
+<p>The exact timetable is supplied later by ESILV. The dependency order is binding:
+the relevant CM precedes its TD/TDo.</p>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>Session</th>
+<th>Three-hour outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>September</td>
+<td>TD1 — Temporal data contract and baselines</td>
+<td>Freeze the forecasting contract, test the daily index, and compare three transparent baselines on development data</td>
+</tr>
+<tr>
+<td>October</td>
+<td>TD2 — Rolling-origin models</td>
+<td>Compare seasonal naive, ETS, and SARIMA on three identical origins; freeze a development selection rule</td>
+</tr>
+<tr>
+<td>November</td>
+<td>TD3 — MDP, reward, and baselines</td>
+<td>Verify the inventory environment and reward, then compare random and reorder policies on common public seeds</td>
+</tr>
+<tr>
+<td>December</td>
+<td>TD4 — Tabular Q-learning</td>
+<td>Implement Q-learning explicitly, freeze a finite Q-table, and compare it on separate development episodes</td>
+</tr>
+<tr>
+<td>First half of January</td>
+<td>TDo1 — Forecasting release</td>
+<td>Score the frozen forecasting decision on the protected 28-day horizon once; issue a bounded operational release</td>
+</tr>
+<tr>
+<td>Second half of January</td>
+<td>TDo2 — RL safety release</td>
+<td>Evaluate the frozen Q-table on injected protected seeds; issue release, fallback, monitoring, and rollback conditions</td>
+</tr>
+</tbody>
+</table>
+<p>The capstone consolidates these sessions. It does not create a seventh practical
+session or require a new model after TDo2.</p>
+<h2 id="support-core-and-extension">Support, Core, and Extension</h2>
+<p>All students are assessed against the same Core outcomes.</p>
+<ul>
+<li><strong>Support</strong> provides guided cells, checkpoints, micro-examples, visual
+explanations, and recovery instructions.</li>
+<li><strong>Core</strong> is the common assessed protocol and can earn the maximum mark.</li>
+<li><strong>Extension</strong> adds one bounded ablation, sensitivity, uncertainty, or
+engineering study only after Core validity passes.</li>
+</ul>
+<p>An extension never repairs leakage, protected-data tuning, a missing baseline,
+unequal cases/budgets, seed cherry-picking, or an irreproducible result. The
+ungraded diagnostic routes each student to only the bridge material they need.</p>
+<h2 id="technical-environment">Technical environment</h2>
+<ul>
+<li>supported primary profile: local CPU, Python 3.11–3.12, locked with uv;</li>
+<li>optional compatibility route: Google Colab using requirements-colab.txt;</li>
+<li>GPU: not required;</li>
+<li>public tools: NumPy, pandas, SciPy, scikit-learn, statsmodels, Matplotlib,
+and Gymnasium;</li>
+<li>common development seeds: 11, 23, 37, 51, 71;</li>
+<li>protected forecasting labels and RL evaluation seeds remain instructor-only.</li>
+</ul>
+<p>The historical R1 was replayed in two fresh live-Colab CPU runtimes. Those
+receipts do not cover the changed R2 sources. R2 local and browser verification
+is recorded separately; no live R2 Colab acceptance is claimed.</p>
+<h2 id="assessment">Assessment</h2>
+<p>The course-owner assessment rule is:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th style="text-align:right">Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Progressive evidence portfolio</td>
+<td style="text-align:right">40%</td>
+</tr>
+<tr>
+<td>Reproducible two-strand capstone</td>
+<td style="text-align:right">40%</td>
+</tr>
+<tr>
+<td>Individual verification</td>
+<td style="text-align:right">20%</td>
+</tr>
+</tbody>
+</table>
+<p>The detailed rule, invalidation conditions, pair-work obligations, and AI policy
+are in <a href="ASSESSMENT_AND_AI_USE_POLICY.html">ASSESSMENT_AND_AI_USE_POLICY.md</a>.
+The filename is retained for compatibility; its internal teaching rule is
+accepted by the course owner. If the LMS configuration differs, the official
+value replaces it and the package is rebuilt.</p>
+<h2 id="capstone">Capstone</h2>
+<p>The capstone contains exactly:</p>
+<ol>
+<li>a forecasting release claim produced from TDo1;</li>
+<li>an RL policy release claim produced from TDo2;</li>
+<li>a cross-strand forecast-to-inventory operational and safety synthesis.</li>
+</ol>
+<p>Development evidence from TD1–TD4 supports provenance and method explanation,
+but it is not substituted for either controlled release receipt. The capstone
+requires replayable artifacts, submission.yaml, claims_evidence.csv, an AI use
+log, contribution records, limitations, fallback, monitoring, and rollback.</p>
+<h2 id="integrity-and-safety">Integrity and safety</h2>
+<p>Generative AI is allowed only when its tool, purpose, reused content, tests, and
+human verification are disclosed. A result that a student cannot explain or
+reproduce receives no credit. Pair work does not remove individual
+accountability.</p>
+<p>The inventory policy remains a simulated classroom decision. It is not
+authorised for production, autonomous procurement, or real operational control.</p>
+</main></body></html>

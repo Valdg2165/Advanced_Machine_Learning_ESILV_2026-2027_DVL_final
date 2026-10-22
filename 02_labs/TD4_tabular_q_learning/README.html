@@ -1,0 +1,93 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>README</title><link rel="stylesheet" href="../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../index.html">Course start</a> · <a href="../../00_start/SETUP.html">Setup</a> · <a href="../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><p><a href="student_starter.ipynb" download>Core notebook</a> · <a href="support_starter.ipynb" download>Support notebook</a></p><h1 id="td4--tabular-q-learning-under-a-frozen-development-protocol">TD4 — Tabular Q-learning under a frozen development protocol</h1>
+<p><strong>Duration:</strong> 3 hours<br/>
+<strong>Mode:</strong> paired implementation, individual evidence and interpretation<br/>
+<strong>Scope:</strong> Time Series and Reinforcement Learning only<br/>
+<strong>CPU profile:</strong> verified local Python 3.11/3.12; no GPU required</p>
+<h2 id="decision-scenario">Decision scenario</h2>
+<p>Train a transparent tabular policy for the TD3 inventory MDP and determine whether its development behaviour warrants controlled final evaluation.</p>
+<h2 id="student-route-at-a-glance">Student route at a glance</h2>
+<ul>
+<li>01 — <strong>WHERE AM I?</strong> RL: after CM-B2 and TD3, before the controlled TDo2 release.</li>
+<li>02 — <strong>TODAY'S OBJECTIVE:</strong> Implement explicit tabular Q-learning and compare a frozen policy on separate public development episodes.</li>
+<li>03 — <strong>WHAT YOU NEED:</strong> The locked local Python 3.11/3.12 environment and the public TD3 environment/evaluation contracts.</li>
+<li>04 — <strong>CORE ROUTE:</strong> <a href="student_starter.ipynb">Open the Core notebook</a>.</li>
+<li>05 — <strong>SUPPORT ROUTE:</strong> <a href="support_starter.ipynb">Open the guided Support notebook</a>; it has the same assessed Core and 20/20 ceiling.</li>
+<li>06 — <strong>CHECKPOINTS:</strong> Follow the <a href="#180-minute-route">180-minute route</a>.</li>
+<li>07 — <strong>WHAT TO SUBMIT / RETAIN:</strong> Use <a href="#deliverables">Deliverables</a> and <a href="#submission-hygiene">Submission hygiene</a>; freeze the Q-table, configuration, and hash.</li>
+<li>08 — <strong>COMMON FAILURE MODES:</strong> See <a href="failure_modes.html">TD4 recovery checks</a>.</li>
+<li>09 — <strong>WHAT THIS PREPARES NEXT:</strong> Hand the unchanged Q-table and protocol to TDo2 for controlled evaluation.</li>
+</ul>
+<h2 id="learning-outcomes">Learning outcomes</h2>
+<ul>
+<li>implement epsilon-greedy tabular Q-learning with explicit seeds and decay</li>
+<li>handle Gymnasium termination and time-limit truncation correctly in the TD target</li>
+<li>diagnose training cost without presenting it as independent policy evidence</li>
+<li>compare the frozen Q-table with TD3 baselines on separate public development episodes</li>
+</ul>
+<h2 id="before-class--verified-local-runtime">Before class — verified local runtime</h2>
+<p>From the course root run <code>uv sync --frozen</code>, then
+<code>uv run python scripts/check_setup.py</code>. Colab is an optional
+portability path governed by the release evidence for the exact archive in use;
+see <code>../COLAB_PREFLIGHT.md</code>.</p>
+<p>Read the applicable contract before modelling: <code>shared/inventory_env.py</code> and <code>shared/rl.py</code>.</p>
+<h2 id="capstone-evidence-boundary">Capstone evidence boundary</h2>
+<p>Append this session's evidence and a <strong>provisional development claim
+candidate</strong> to the portfolio. It may support model/reward choice and provenance,
+but it is not a final empirical release claim. TDo1 or TDo2 must later confirm,
+revise, or reject it using the protected/controlled protocol.</p>
+<h2 id="choose-your-route">Choose your route</h2>
+<ul>
+<li><strong>Support:</strong> open <code>support_starter.ipynb</code> for smaller steps, contracts, assertions, micro-examples, and recovery checkpoints.</li>
+<li><strong>Core:</strong> open <code>student_starter.ipynb</code> for the less-scaffolded implementation.</li>
+<li><strong>Extension:</strong> attempt the bounded optional task only after valid Core evidence.</li>
+</ul>
+<p>Support and Core share the same outcomes and full 20/20 ceiling. Extensions add
+no points and cannot repair invalid Core evidence.</p>
+<h2 id="180-minute-route">180-minute route</h2>
+<ul>
+<li>0–20 min — restore TD3 MDP/reward/baseline contract</li>
+<li>20–55 min — Q-table shape, Bellman target, and truncation micro-tests</li>
+<li>55–110 min — explicit episode/step/update loop over five public training seeds</li>
+<li>110–140 min — learning trace and state-policy inspection</li>
+<li>140–165 min — separate public development evaluation against both baselines</li>
+<li>165–180 min — freeze Q-table/configuration and exit ticket</li>
+</ul>
+<h2 id="assessed-core">Assessed Core</h2>
+<ul>
+<li>Implement the Q-learning loop explicitly; no completed trainer is distributed in the student path.</li>
+<li>Train one Q-table through base-seed blocks 11, 23, 37, 51, and 71 with 350 episodes each; these are not five independent training runs. Use one action RNG seeded from 11 and a single linear epsilon decay from 0.85 to 0.05 across all 1,750 episodes.</li>
+<li>Bootstrap across time-limit truncation and zero continuation only on genuine termination.</li>
+<li>Retain per-episode cost and epsilon; training curves are diagnostics, not final evaluation.</li>
+<li>Evaluate the frozen table, random policy, and reorder heuristic on five separately derived public development seeds under identical episodes.</li>
+<li>Save a finite Q-table with shape <code>(9,2,3)</code>, configuration, hash, and development evidence for TDo2 handoff.</li>
+</ul>
+<h2 id="supportcoreextension-parity">Support/Core/Extension parity</h2>
+<ul>
+<li><strong>Beginner/Support:</strong> complete every assessed decision and interpretation; prewritten checks are navigation, not evidence credit.</li>
+<li><strong>Intermediate/Core:</strong> implement directly from the contract and add one justified diagnostic.</li>
+<li><strong>Advanced/Extension:</strong> freeze valid Core first, then record the separate configuration and compute budget.</li>
+</ul>
+<h2 id="optional-advanced-extension--ungraded">Optional Advanced extension — ungraded</h2>
+<p>Repeat one public-seed development run with a predeclared slower epsilon decay. Hold all other settings fixed and report stability/cost, not a post-hoc winner.</p>
+<h2 id="evidence-contract">Evidence contract</h2>
+<p>Every substantive claim identifies the data/environment version, protocol,
+baseline, metric, repeated evidence, reproducible code/configuration, and a
+material limitation. Use public base seeds <code>11, 23, 37, 51, 71</code> wherever the
+session requires repeated stochastic evidence.</p>
+<h2 id="deliverables">Deliverables</h2>
+<ul>
+<li>completed notebook</li>
+<li>explicit Q-learning implementation and target tests</li>
+<li>training trace and policy-map figure</li>
+<li>three-policy public development comparison</li>
+<li>frozen <code>q_table.npy</code>, configuration, and hash</li>
+</ul>
+<h2 id="submission-hygiene">Submission hygiene</h2>
+<ul>
+<li>restart the kernel and run top to bottom;</li>
+<li>keep outputs concise and preserve failed or partial evidence;</li>
+<li>never include private teaching or evaluation material;</li>
+<li>update the pair evidence, claim-candidate/decision, and contribution records before leaving;</li>
+<li>freeze the relevant configuration, artifact hashes, and commit/checkpoint.</li>
+</ul>
+</main></body></html>

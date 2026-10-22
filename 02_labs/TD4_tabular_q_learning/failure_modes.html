@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>failure_modes</title><link rel="stylesheet" href="../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../index.html">Course start</a> · <a href="../../00_start/SETUP.html">Setup</a> · <a href="../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="td4-failure-modes-and-recovery">TD4 failure modes and recovery</h1>
+<table>
+<thead>
+<tr>
+<th>Symptom/anti-pattern</th>
+<th>Why the evidence fails</th>
+<th>Recovery check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Truncation zeros the target</td>
+<td>continuing-task value is biased at the time limit</td>
+<td>pass only terminated to q_learning_target</td>
+</tr>
+<tr>
+<td>Evaluation reuses training episodes</td>
+<td>generalisation evidence is contaminated</td>
+<td>derive and declare a separate public development seed set</td>
+</tr>
+<tr>
+<td>Epsilon RNG uses environment RNG</td>
+<td>policy randomness changes the environment path</td>
+<td>use a separate named action generator</td>
+</tr>
+<tr>
+<td>Training return called final evidence</td>
+<td>the same experience shaped the table</td>
+<td>reserve policy claims for independent evaluation</td>
+</tr>
+<tr>
+<td>Q-table saved without config/hash</td>
+<td>the controlled artifact cannot be identified</td>
+<td>freeze table, parameters, code commit, and SHA-256 together</td>
+</tr>
+</tbody>
+</table>
+<p>If recovery changes a data boundary, origin, seed set, reward, model order, or
+frozen artifact, invalidate affected metrics and rerun the declared comparison.</p>
+</main></body></html>

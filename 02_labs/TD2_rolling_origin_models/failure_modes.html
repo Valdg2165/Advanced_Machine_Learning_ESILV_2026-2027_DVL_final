@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>failure_modes</title><link rel="stylesheet" href="../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../index.html">Course start</a> · <a href="../../00_start/SETUP.html">Setup</a> · <a href="../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="td2-failure-modes-and-recovery">TD2 failure modes and recovery</h1>
+<table>
+<thead>
+<tr>
+<th>Symptom/anti-pattern</th>
+<th>Why the evidence fails</th>
+<th>Recovery check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Different origins per model</td>
+<td>model and evaluation population are confounded</td>
+<td>materialise one origin tuple and reuse it</td>
+</tr>
+<tr>
+<td>Random cross-validation</td>
+<td>future observations train past forecasts</td>
+<td>use expanding windows with history strictly before origin</td>
+</tr>
+<tr>
+<td>Tune SARIMA on final targets</td>
+<td>protected evidence becomes development data</td>
+<td>freeze order and selection rule before TDo1 release scoring</td>
+</tr>
+<tr>
+<td>Ljung–Box non-rejection called proof</td>
+<td>a finite diagnostic cannot establish independence</td>
+<td>state only that the test did not reject at named lags</td>
+</tr>
+</tbody>
+</table>
+<p>If recovery changes a data boundary, origin, seed set, reward, model order, or
+frozen artifact, invalidate affected metrics and rerun the declared comparison.</p>
+</main></body></html>

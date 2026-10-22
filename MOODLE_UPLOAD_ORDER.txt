@@ -1,0 +1,15 @@
+00 Start Here: 00_start/START_HERE.html
+01 Kickoff: lectures/Advanced_ML_Course_Kickoff.pdf
+02 CM-B1 Time Series: lectures/Advanced_ML_CM-B1_Time_Series.pdf
+03 TD1 temporal data baselines: 02_labs/TD1_temporal_data_baselines/README.html
+04 TD2 rolling origin models: 02_labs/TD2_rolling_origin_models/README.html
+05 CM-B2 Reinforcement Learning: lectures/Advanced_ML_CM-B2_Reinforcement_Learning.pdf
+06 TD3 mdp reward baselines: 02_labs/TD3_mdp_reward_baselines/README.html
+07 TD4 tabular q learning: 02_labs/TD4_tabular_q_learning/README.html
+08 TDo1 forecasting release: 02_labs/TDo1_forecasting_release/README.html
+09 TDo2 rl safety release: 02_labs/TDo2_rl_safety_release/README.html
+10 Capstone: 03_capstone/student/CAPSTONE_BRIEF.html
+11 Interactive Companion / Book: interactive/index.html
+
+For the full offline experience upload this complete ZIP as a downloadable file.
+For Moodle HTML display, upload the complete package as a File resource, unzip it and set index.html as the main file. Moodle administrator policy may restrict JavaScript; downloading and extracting the ZIP is the supported fallback.

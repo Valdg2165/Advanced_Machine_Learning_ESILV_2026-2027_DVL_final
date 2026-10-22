@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>B1_PYTHON_FOR_EXPERIMENTS</title><link rel="stylesheet" href="../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../index.html">Course start</a> · <a href="../../00_start/SETUP.html">Setup</a> · <a href="../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="b1--python-for-experiments">B1 — Python for Experiments</h1>
+<blockquote>
+<p><strong>Timebox:</strong> 30 minutes (5 min lesson/example, 20 min practice, 5 min exit check)<br/>
+<strong>Status:</strong> ungraded support; do not submit this work</p>
+</blockquote>
+<h2 id="why-this-matters">Why this matters</h2>
+<p>Experimental code is easier to test when inputs and outputs are explicit. A
+small function should have one purpose, avoid dependence on notebook globals,
+validate an impossible input early, and return data rather than only printing
+it. Configuration and seeds are inputs, not facts hidden inside the function.</p>
+<h2 id="worked-micro-example">Worked micro-example</h2>
+<pre><code class="language-python">def mean_absolute_error(forecast: list[float], observed: list[float]) -&gt; float:
+    """Return mean absolute forecast error for aligned observations."""
+    if len(forecast) != len(observed):
+        raise ValueError("forecast and observed must have equal length")
+    if not observed:
+        raise ValueError("at least one observation is required")
+    errors = [abs(pred - actual) for pred, actual in zip(forecast, observed)]
+    return sum(errors) / len(errors)
+
+
+assert mean_absolute_error([10.0, 12.0, 9.0], [11.0, 12.0, 11.0]) == 1.0
+</code></pre>
+<p>The function can be tested with new inputs. A version that reads global
+variables named <code>forecast</code> and <code>observed</code> cannot be understood from its signature
+and is easy to break by running cells out of order.</p>
+<h2 id="practice--20-minutes">Practice — 20 minutes</h2>
+<p>Implement <code>summarise_runs(values)</code> using only the Python standard library. Its
+contract is:</p>
+<ul>
+<li>input: an iterable of numeric repeated-run values;</li>
+<li>output: a dictionary with exactly <code>n</code>, <code>mean</code>, and <code>population_std</code>;</li>
+<li>empty input: raise <code>ValueError</code> with an informative message;</li>
+<li>invalid non-numeric data: allow a clear <code>TypeError</code> or raise one explicitly;</li>
+<li>no printing and no use of a global variable.</li>
+</ul>
+<p>Use <code>statistics.fmean</code> and <code>statistics.pstdev</code>. Add these checks:</p>
+<pre><code class="language-python">summary = summarise_runs([0.70, 0.74, 0.72])
+assert summary["n"] == 3
+assert abs(summary["mean"] - 0.72) &lt; 1e-12
+assert summarise_runs([0.5])["population_std"] == 0.0
+</code></pre>
+<p>Finally, write a two-line explanation of why the function returns a dictionary
+instead of a formatted sentence, and why the edge-case check belongs before the
+calculation.</p>
+<h2 id="exit-check--5-minutes">Exit check — 5 minutes</h2>
+<ol>
+<li>What information can a caller learn from a function signature?</li>
+<li>Why is <code>print(mean)</code> insufficient evidence for later aggregation?</li>
+<li>Would hiding a seed inside a function make a comparison easier or harder to
+audit?</li>
+</ol>
+<p>Mark B1 <code>Independent</code> only if all assertions pass and you can explain the
+contract. Opening the recovery answer makes the result <code>Supported</code>, not failed.</p>
+<p>&lt;details&gt;
+&lt;summary&gt;Recovery answer&lt;/summary&gt;</p>
+<pre><code class="language-python">from statistics import fmean, pstdev
+
+
+def summarise_runs(values) -&gt; dict[str, float | int]:
+    materialised = list(values)
+    if not materialised:
+        raise ValueError("summarise_runs requires at least one value")
+    return {
+        "n": len(materialised),
+        "mean": fmean(materialised),
+        "population_std": pstdev(materialised),
+    }
+</code></pre>
+<p>Structured data can be validated, saved, compared, or formatted later; a
+sentence is harder to reuse safely. Checking emptiness first converts an opaque
+statistics error into a failure that states the violated contract. Seeds should
+be caller-visible inputs so two methods can demonstrably receive the same
+randomness policy.</p>
+<p>&lt;/details&gt;</p>
+</main></body></html>

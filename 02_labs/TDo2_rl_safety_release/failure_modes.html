@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>failure_modes</title><link rel="stylesheet" href="../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../index.html">Course start</a> · <a href="../../00_start/SETUP.html">Setup</a> · <a href="../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="tdo2-failure-modes-and-recovery">TDo2 failure modes and recovery</h1>
+<table>
+<thead>
+<tr>
+<th>Symptom/anti-pattern</th>
+<th>Why the evidence fails</th>
+<th>Recovery check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Final seeds hard-coded or logged</td>
+<td>controlled evaluation confidentiality is broken</td>
+<td>withdraw the run and use injected seeds only</td>
+</tr>
+<tr>
+<td>Q-table changed after handoff</td>
+<td>returned evidence refers to another policy</td>
+<td>compare table/config/source hashes and immutable tag</td>
+</tr>
+<tr>
+<td>Training reward used as release evidence</td>
+<td>no independent evaluation supports the policy</td>
+<td>use the controlled aggregate</td>
+</tr>
+<tr>
+<td>Cost improves but service fails</td>
+<td>reward gain hides operational harm</td>
+<td>apply the service floor before cost comparison</td>
+</tr>
+<tr>
+<td>Overlapping intervals called proof of equality</td>
+<td>descriptive intervals are overinterpreted</td>
+<td>report uncertainty and bounded decision without a significance claim</td>
+</tr>
+</tbody>
+</table>
+<p>If recovery changes a data boundary, origin, seed set, reward, model order, or
+frozen artifact, invalidate affected metrics and rerun the declared comparison.</p>
+</main></body></html>

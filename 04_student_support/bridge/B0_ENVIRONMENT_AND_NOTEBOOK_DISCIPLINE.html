@@ -1,0 +1,112 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>B0_ENVIRONMENT_AND_NOTEBOOK_DISCIPLINE</title><link rel="stylesheet" href="../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../index.html">Course start</a> · <a href="../../00_start/SETUP.html">Setup</a> · <a href="../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="b0--environment-and-notebook-discipline">B0 — Environment and Notebook Discipline</h1>
+<blockquote>
+<p><strong>Timebox:</strong> 30 minutes (5 min lesson/example, 20 min practice, 5 min exit check)<br/>
+<strong>Status:</strong> ungraded support; do not submit this work</p>
+</blockquote>
+<h2 id="why-this-matters">Why this matters</h2>
+<p>A result is not reproducible merely because a notebook once displayed it. A
+reviewer needs the declared interpreter and packages, paths that work outside
+your machine, explicit randomness, and cells that succeed from a fresh kernel in
+top-to-bottom order.</p>
+<p>Keep four controls visible:</p>
+<ol>
+<li><strong>Environment:</strong> record Python and direct package versions.</li>
+<li><strong>Location:</strong> build paths from the project root; never depend on your user
+name or desktop folder.</li>
+<li><strong>Randomness:</strong> create and pass a named random generator or seed.</li>
+<li><strong>State:</strong> restart the kernel and run all cells before trusting output.</li>
+</ol>
+<h2 id="worked-micro-example">Worked micro-example</h2>
+<p>This fragment has no hidden notebook state and writes a small, inspectable
+environment record.</p>
+<pre><code class="language-python">from importlib.metadata import version
+from pathlib import Path
+import json
+import platform
+import numpy as np
+
+project_root = Path.cwd()
+evidence_dir = project_root / "diagnostic" / "evidence"
+evidence_dir.mkdir(parents=True, exist_ok=True)
+
+rng = np.random.default_rng(11)
+sample = rng.integers(0, 10, size=4).tolist()
+
+record = {
+    "python": platform.python_version(),
+    "numpy": version("numpy"),
+    "seed": 11,
+    "sample": sample,
+}
+(evidence_dir / "environment.json").write_text(
+    json.dumps(record, indent=2), encoding="utf-8"
+)
+print(record)
+</code></pre>
+<p>By contrast, <code>Path.home() / "Desktop" / "result.csv"</code> is machine-specific, and a
+cell containing only <code>scores.mean()</code> depends on an earlier cell having created
+<code>scores</code>.</p>
+<h2 id="practice--20-minutes">Practice — 20 minutes</h2>
+<p>Create a scratch notebook or script and complete all four steps:</p>
+<ol>
+<li>Define <code>project_root = Path.cwd()</code> and an output path
+<code>diagnostic/evidence/b0_result.json</code> without an absolute path.</li>
+<li>With <code>np.random.default_rng(23)</code>, generate five integers from 0 through 99.
+Save the seed, values, Python version, NumPy version, and output path in JSON.</li>
+<li>Deliberately run the generation twice with a newly created generator using
+seed 23. Confirm the two value lists match. Then draw twice from the <em>same</em>
+generator and explain why the second draw differs.</li>
+<li>Restart the kernel or process, run everything top to bottom, and confirm that
+<code>b0_result.json</code> is regenerated without manually creating a variable.</li>
+</ol>
+<p>Do not install or upgrade packages during this exercise. If <code>numpy</code> is absent,
+record that as the earliest failure and request the approved environment.</p>
+<h2 id="exit-check--5-minutes">Exit check — 5 minutes</h2>
+<p>Answer without running another experiment:</p>
+<ol>
+<li>Which part makes the path portable?</li>
+<li>Does setting a seed guarantee identical results across every library version
+and hardware platform?</li>
+<li>What evidence exposes a notebook cell that depends on hidden state?</li>
+</ol>
+<p>Mark B0 <code>Independent</code> only if the clean rerun succeeds and you can answer all
+three. Mark it <code>Supported</code> if the recovery answer was needed. Otherwise mark it
+<code>Not yet</code> and send the first failure.</p>
+<p>&lt;details&gt;
+&lt;summary&gt;Recovery answer&lt;/summary&gt;</p>
+<p>One acceptable practice solution is:</p>
+<pre><code class="language-python">from importlib.metadata import version
+from pathlib import Path
+import json
+import platform
+import numpy as np
+
+project_root = Path.cwd()
+output_path = project_root / "diagnostic" / "evidence" / "b0_result.json"
+output_path.parent.mkdir(parents=True, exist_ok=True)
+
+first = np.random.default_rng(23).integers(0, 100, size=5).tolist()
+second = np.random.default_rng(23).integers(0, 100, size=5).tolist()
+assert first == second
+
+continued_rng = np.random.default_rng(23)
+draw_a = continued_rng.integers(0, 100, size=5).tolist()
+draw_b = continued_rng.integers(0, 100, size=5).tolist()
+assert draw_a != draw_b
+
+record = {
+    "python": platform.python_version(),
+    "numpy": version("numpy"),
+    "seed": 23,
+    "values": first,
+    "relative_output": str(output_path.relative_to(project_root)),
+}
+output_path.write_text(json.dumps(record, indent=2), encoding="utf-8")
+</code></pre>
+<p><code>project_root / ...</code> avoids a user-specific absolute path. A seed controls the
+generator's starting state, but it is not a universal guarantee across changed
+algorithms, library versions, runtime settings, or hardware. Restart-and-run-all is
+the decisive hidden-state test: any cell that then needs an undefined variable
+is not self-contained.</p>
+<p>&lt;/details&gt;</p>
+</main></body></html>

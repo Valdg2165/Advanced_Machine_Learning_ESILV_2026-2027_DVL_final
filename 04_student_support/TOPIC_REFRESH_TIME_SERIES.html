@@ -1,0 +1,71 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TOPIC_REFRESH_TIME_SERIES</title><link rel="stylesheet" href="../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../index.html">Course start</a> · <a href="../00_start/SETUP.html">Setup</a> · <a href="../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="just-in-time-refresh--time-series-reasoning">Just-in-Time Refresh — Time-Series Reasoning</h1>
+<blockquote>
+<p><strong>Use:</strong> optional before TD1; revisit before TD2/TDo1 if needed<br/>
+<strong>Timebox:</strong> 20 minutes<br/>
+<strong>Status:</strong> ungraded support; no assessed data or conclusions appear here</p>
+</blockquote>
+<h2 id="1-retrieve-the-contract--4-minutes">1. Retrieve the contract — 4 minutes</h2>
+<p>For a forecast issued at origin <code>t</code> with horizon <code>h</code>:</p>
+<ul>
+<li>training history ends at or before <code>t</code>;</li>
+<li>the forecast covers <code>t+1</code> through <code>t+h</code>;</li>
+<li>a feature is legal only if its value is available when the forecast is issued;</li>
+<li>the protected final horizon is not a model-selection set.</li>
+</ul>
+<p>Write, without looking back: the observation unit, frequency, origin, horizon,
+target, and latest legal information time for one seven-day demand forecast.</p>
+<h2 id="2-baseline-and-metric--5-minutes">2. Baseline and metric — 5 minutes</h2>
+<p>For seasonal period <code>s</code>, seasonal naive repeats the last <code>s</code> observed values:
+<code>y_hat[t+k | t] = y[t+k-s*ceil(k/s)]</code>, for <code>k &gt;= 1</code>.
+For daily demand with weekly seasonality, <code>s = 7</code>: horizons 1, 7, and 8 copy
+<code>y[t-6]</code>, <code>y[t]</code>, and <code>y[t-6]</code>, respectively. Every copied value is already
+observed at origin <code>t</code>. The simpler index <code>t+k-s</code> is safe only for <code>1 &lt;= k &lt;= s</code>.
+It is a serious comparator: a candidate that cannot beat it under a fair protocol
+has not justified extra complexity.</p>
+<p>Mean absolute error is
+<code>MAE = mean(abs(y - y_hat))</code>. It preserves target units but weights every absolute
+error equally and does not alone describe bias, peak-day failure, or inventory
+cost.</p>
+<p>Checkpoint: for actual <code>[10, 14]</code> and forecast <code>[12, 13]</code>, compute MAE and signed
+mean error. State what each reveals.</p>
+<p>&lt;details&gt;
+&lt;summary&gt;Checkpoint answer&lt;/summary&gt;</p>
+<p>Absolute errors are <code>[2, 1]</code>, so MAE is <code>1.5</code>. Signed errors using
+<code>forecast - actual</code> are <code>[2, -1]</code>, so mean error is <code>0.5</code>: slight average
+over-forecasting in this tiny example. Two observations are insufficient for a
+general claim.</p>
+<p>&lt;/details&gt;</p>
+<h2 id="3-rolling-origin-logic--6-minutes">3. Rolling-origin logic — 6 minutes</h2>
+<p>A valid development comparison repeats this sequence:</p>
+<ol>
+<li>choose an origin from the predeclared development block;</li>
+<li>fit each method using only history permitted at that origin;</li>
+<li>forecast the same horizon;</li>
+<li>score all methods on the same observed target days;</li>
+<li>retain per-origin evidence before aggregation.</li>
+</ol>
+<p>Keep the course's three distinct windows visible: TD1 uses the last 28 <strong>public
+development</strong> days for baseline practice; TD2 uses three 14-day development
+windows for model comparison; TDo1 uses a different, protected 28-day final
+window after the selection rule is frozen. Equal lengths do not make the TD1
+and TDo1 windows the same evidence.</p>
+<p>Audit this proposal: “Fit once on the full series, then report scores for three
+earlier origins.” Identify the invalid information flow and repair it.</p>
+<p>&lt;details&gt;
+&lt;summary&gt;Checkpoint answer&lt;/summary&gt;</p>
+<p>The fitted model has observed data that are future information for the earlier
+origins. Refit at every origin using only the permitted history, or use an
+explicit expanding/rolling implementation that produces the same boundary.</p>
+<p>&lt;/details&gt;</p>
+<h2 id="4-ready-for-td-checkpoint--5-minutes">4. Ready-for-TD checkpoint — 5 minutes</h2>
+<p>You are ready for the Core starter when you can answer all four:</p>
+<ul>
+<li>Can I state the origin and horizon as dates or indices?</li>
+<li>Can I prove every feature was available at the origin?</li>
+<li>Can I implement and explain seasonal naive?</li>
+<li>Can I retain paired per-origin evidence before computing a mean?</li>
+</ul>
+<p>If one answer is no, enter the Support starter and identify the earliest missing
+item in <a href="templates/LEARNING_CHECKPOINT.html"><code>templates/LEARNING_CHECKPOINT.md</code></a>.
+The route does not cap your mark.</p>
+</main></body></html>

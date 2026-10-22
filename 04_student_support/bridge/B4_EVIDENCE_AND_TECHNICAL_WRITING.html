@@ -1,0 +1,84 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>B4_EVIDENCE_AND_TECHNICAL_WRITING</title><link rel="stylesheet" href="../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../index.html">Course start</a> · <a href="../../00_start/SETUP.html">Setup</a> · <a href="../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="b4--evidence-and-technical-writing">B4 — Evidence and Technical Writing</h1>
+<blockquote>
+<p><strong>Timebox:</strong> 30 minutes (5 min lesson/example, 20 min practice, 5 min exit check)<br/>
+<strong>Status:</strong> ungraded support; do not submit this work</p>
+</blockquote>
+<h2 id="why-this-matters">Why this matters</h2>
+<p>A defensible result sentence names the versioned data or environment, protocol,
+baseline, metric, repeated evidence, artifact path, and material limitation. It
+does not turn a development-origin difference into protected-horizon,
+industrial, or causal evidence.</p>
+<p>Use this pattern:</p>
+<blockquote>
+<p>Under <strong>[protocol and budget]</strong> on <strong>[versioned task/data]</strong>, <strong>[candidate]</strong>
+differed from <strong>[baseline]</strong> by <strong>[metric result and repetitions]</strong>. This
+supports <strong>[bounded decision]</strong>, but not <strong>[material limitation]</strong>.</p>
+</blockquote>
+<h2 id="worked-micro-example">Worked micro-example</h2>
+<p>Suppose five development origins report mean MAE <code>8.4</code> for seasonal naive and
+<code>7.9</code> for ETS, with paired MAE differences ranging from <code>-1.2</code> to <code>0.3</code> demand
+units. A defensible sentence is:</p>
+<blockquote>
+<p>On <code>daily_demand_synthetic_v1</code>, across five frozen development origins with a
+7-day horizon, ETS mean MAE was 7.9 versus 8.4 for seasonal naive; paired
+origin differences ranged from -1.2 to 0.3 units. This supports freezing ETS
+for the protected classroom release, but not superiority on every origin or
+transfer to real inventory operations.</p>
+</blockquote>
+<p>The negative and positive paired differences expose non-uniform behaviour. The
+claim neither invents significance nor uses the protected horizon.</p>
+<h2 id="practice--20-minutes">Practice — 20 minutes</h2>
+<p>Use this supplied map:</p>
+<pre><code class="language-text">data/daily_demand_manifest.json
+src/td2_forecast.py
+configs/td2_rolling_origin.yaml
+evidence/td2/per_origin.csv
+evidence/td2/summary.json
+</code></pre>
+<p>The summary states:</p>
+<pre><code class="language-json">{
+  "dataset": "daily_demand_synthetic_v1",
+  "split": "development_origins_only",
+  "horizon_days": 7,
+  "origins": 5,
+  "metric": "MAE",
+  "seasonal_naive_mean": 8.4,
+  "ets_mean": 7.9,
+  "paired_difference_range": [-1.2, 0.3]
+}
+</code></pre>
+<ol>
+<li>Write one claim of at most 65 words using the pattern above.</li>
+<li>Name the exact provenance, code, configuration, per-origin, and summary
+paths.</li>
+<li>Assign <code>supported</code>, <code>partial</code>, <code>failed</code>, or <code>withdrawn</code>; justify the status.</li>
+<li>State one decision the evidence supports and two claims it does not support.</li>
+</ol>
+<p>Do not invent protected-horizon performance, a confidence interval, p-value,
+runtime, stock-cost benefit, or real-world effect.</p>
+<h2 id="exit-check--5-minutes">Exit check — 5 minutes</h2>
+<ol>
+<li>Can a reviewer locate evidence for every number?</li>
+<li>Does the limitation materially narrow the claim?</li>
+<li>What additional evidence is needed before an inventory-policy claim?</li>
+</ol>
+<p>Mark B4 <code>Independent</code> when every path resolves in the supplied map and no
+statement exceeds the supplied evidence.</p>
+<p>&lt;details&gt;
+&lt;summary&gt;Recovery answer&lt;/summary&gt;</p>
+<p>The worked sentence is acceptable. One trace is:</p>
+<ul>
+<li>provenance: <code>data/daily_demand_manifest.json</code>;</li>
+<li>code: <code>src/td2_forecast.py</code>;</li>
+<li>frozen protocol: <code>configs/td2_rolling_origin.yaml</code>;</li>
+<li>paired evidence: <code>evidence/td2/per_origin.csv</code>;</li>
+<li>aggregate evidence: <code>evidence/td2/summary.json</code>.</li>
+</ul>
+<p><code>supported</code> applies only to the narrow development-origin comparison. The
+evidence supports freezing ETS for the declared protected classroom evaluation.
+It does not support superiority at every origin or an operational inventory
+benefit. The latter requires a declared demand-to-decision interface, frozen
+policy comparators, paired protected episodes, operational cost/safety metrics,
+and limitations.</p>
+<p>&lt;/details&gt;</p>
+</main></body></html>
